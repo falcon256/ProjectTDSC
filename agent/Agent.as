@@ -74,7 +74,7 @@
 		 */
 		public function get canSeeMouse():Boolean {
 			var dot:Number = ((mouseX-Main.sGameMap.x)-x) * velocity.x + ((mouseY-Main.sGameMap.y)-y) * velocity.y;
-			trace(""+(mouseX-Main.sGameMap.x)+" "+(mouseY-Main.sGameMap.y));
+			//trace(""+(mouseX-Main.sGameMap.x)+" "+(mouseY-Main.sGameMap.y));
 			return dot > 0;
 		}
 		public function get distanceToMouse():Number {

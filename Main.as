@@ -80,7 +80,7 @@
 			{
 				//agents[0].x = mouseX-gameMap.x;
 				//agents[0].y = mouseY-gameMap.y;
-				trace(""+((mouseX-gameMap.x)-agents[0].x)+" "+((mouseY-gameMap.y)-agents[0].y));
+				//trace(""+((mouseX-gameMap.x)-agents[0].x)+" "+((mouseY-gameMap.y)-agents[0].y));
 			}
 		}
 	}
