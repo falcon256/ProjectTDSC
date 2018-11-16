@@ -1,24 +1,10 @@
-﻿package game {
-	
+﻿package game { // just acts as an image
 	import flash.display.MovieClip;
-	import agent.Agent;
-	
-	
-	public class PlayerShip extends MovieClip {
-		
+	public class PlayerShip extends MovieClip {		
 		public var ship:Ship = new Ship();
-		
 		public function PlayerShip() {
-						
+			ship.isPlayer=true;
+			ship.myImage = this;
 		}
-		
-		public function doUpdate()
-		{
-			this.x=ship.x;
-			this.y=ship.y;
-			this.rotation = ship.rotation;
-		}
-		
 	}
-	
 }

@@ -8,11 +8,11 @@ package game {
 		public var myImage:MovieClip;
 		public var myAgent:Agent;
 		
-		public var velx:Number;
-		public var vely:Number;
-		public var x:Number;
-		public var y:Number;
-		public var rotation:Number;
+		public var velx:Number=0;
+		public var vely:Number=0;
+		public var x:Number=0;
+		public var y:Number=0;
+		public var rotation:Number=0;
 		//basic ship stats
 		public var maxHull:Number=100;
 		public var hull:Number=100;
@@ -47,16 +47,46 @@ package game {
 		public function Ship()
 		{
 			myAgent = new Agent();
+			this.x=0;
+			this.y=0;
 		}
 		
 		public function doUpdate()
 		{
-			this.velx+=myAgent.velocity.x;
-			this.vely+=myAgent.velocity.y;
+			if(!isPlayer)
+			{
+				myAgent.update();
+				this.velx+=myAgent.velocity.x*0.001;
+				this.vely+=myAgent.velocity.y*0.001;
+				myAgent.x=this.x;
+				myAgent.y=this.y;
+				this.rotation += degrees(Math.atan2(vely,velx)) * 0.1;
+				this.rotation -= this.rotation * 0.1;
+			}
+			
 			this.x+=velx;
 			this.y+=vely;
-			
+			//this.rotation+= myAgent.rotation*0.01;
+			//this.rotation-= 0.01;
+			trace("Ship Update " + this.x + " " + this.y);
+			myImage.x=this.x;
+			myImage.y=this.y;
+			myImage.rotation = this.rotation;
 		}
+		
+		
+		
+		//stolen and generic
+		public static function degrees(radians:Number):Number
+		{
+			return radians * 180/Math.PI;
+		}
+		//stolen and generic 
+		public static function radians(degrees:Number):Number
+		{
+			return degrees * Math.PI / 180;
+		}		
+		
 	}
 	
 }
