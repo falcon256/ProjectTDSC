@@ -14,11 +14,13 @@
 	{
 		private var agents:Vector.<Agent>;
 		public static var sGameMap:MovieClip = null;
+		public static var targetingCursor:TargetingReticle = null;
 		public function Main():void 
 		{
 			if (stage) init();
 			else addEventListener(Event.ADDED_TO_STAGE, init);
 			sGameMap = gameMap;
+			targetingCursor = targetingReticle;
 		}
 		
 		private function init(e:Event = null):void 

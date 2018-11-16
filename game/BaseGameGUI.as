@@ -2,12 +2,14 @@
 	
 	import flash.display.MovieClip;
 	import flash.events.Event;
+	import flash.ui.Mouse;
 	
 	public class BaseGameGUI extends MovieClip {
 		
 		
 		public function BaseGameGUI() {
 			addEventListener(Event.ENTER_FRAME,tempCashUpdate);
+			Mouse.hide();
 		}
 		
 		//todo move this into main game loop, when it is created.
@@ -24,6 +26,8 @@
 				text_Rep.text = "Reputation: "+rep;
 				text_Cash.text = "Cash: "+cash;
 			}
+			Main.targetingCursor.x = mouseX;//(mouseX+Main.sGameMap.x);
+			Main.targetingCursor.y = mouseY;//(mouseY+Main.sGameMap.y);
 		}
 	}
 	
