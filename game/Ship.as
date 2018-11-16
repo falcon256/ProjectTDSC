@@ -10,7 +10,9 @@ package game {
 		
 		public var velx:Number;
 		public var vely:Number;
-		
+		public var x:Number;
+		public var y:Number;
+		public var rotation:Number;
 		//basic ship stats
 		public var maxHull:Number=100;
 		public var hull:Number=100;
@@ -44,6 +46,15 @@ package game {
 		
 		public function Ship()
 		{
+			myAgent = new Agent();
+		}
+		
+		public function doUpdate()
+		{
+			this.velx+=myAgent.velocity.x;
+			this.vely+=myAgent.velocity.y;
+			this.x+=velx;
+			this.y+=vely;
 			
 		}
 	}
