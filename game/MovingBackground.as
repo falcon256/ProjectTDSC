@@ -17,10 +17,10 @@
 			yoff = yo;
 			this.layer1.x=xoff*0.02;
 			this.layer1.y=yoff*0.02;
-			this.layer2.x=xoff*0.04;
-			this.layer2.y=yoff*0.04;
-			this.layer3.x=xoff*0.08;
-			this.layer3.y=yoff*0.08;
+			//this.layer2.x=xoff*0.04;
+			//this.layer2.y=yoff*0.04;
+			//this.layer3.x=xoff*0.08;
+			//this.layer3.y=yoff*0.08;
 		}
 	}
 	

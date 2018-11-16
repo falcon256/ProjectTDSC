@@ -7,14 +7,20 @@
 	import flash.display.StageScaleMode;
 	import flash.events.Event;
 	import flash.events.MouseEvent;
+	import game.PlayerShip;
+	import game.Ship;
 	
 	
 	[SWF(backgroundColor="0x000000")]
 	public class Main extends Sprite 
 	{
 		private var agents:Vector.<Agent>;
+		private var ships:Vector.<Ship>;
 		public static var sGameMap:MovieClip = null;
 		public static var targetingCursor:TargetingReticle = null;
+		
+		
+		
 		public function Main():void 
 		{
 			if (stage) init();
@@ -29,11 +35,17 @@
 			removeEventListener(Event.ADDED_TO_STAGE, init);
 			stage.scaleMode = StageScaleMode.NO_SCALE;
 			stage.align = StageAlign.TOP_LEFT;
+			agents = new Vector.<Agent>();
+			ships = new Vector.<Ship>();
 			// entry point
 			//graphics.beginFill(0xeeeeee);
 			//graphics.drawRect(0, 0, stage.stageWidth, stage.stageHeight);
+			var playerS:PlayerShip = new PlayerShip();
+			gameMap.addChild(playerS);
+			ships.push(playerS.ship);
 			
-			agents = new Vector.<Agent>();
+			gameMap.addChild(playerS.ship.myAgent);
+			agents.push(playerS.ship.myAgent);
 			addEventListener(Event.ENTER_FRAME, gameloop);
 			for (var i:int = 0; i < 1; i++) 
 			{
