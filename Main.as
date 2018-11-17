@@ -86,9 +86,15 @@
 				ships[i].doUpdate();
 			}
 			
-			if(isKeyDown(87))
-				playerS.ship.vely+=1;
+			if(isKeyDown(87)) {//w key for foward
+				playerS.ship.velx+= Math.cos(playerS.ship.rotation);
+				playerS.ship.vely+= Math.sin(playerS.ship.rotation);
+			}
 			
+			if(isKeyDown(68)) {//d key to rotate right
+				playerS.ship.rotx+= Math.PI(playerS.ship.rotation);
+				playerS.ship.rotx+= Math.PI(playerS.ship.rotation);
+			}
 			moveCamera();
 			movingBackground.update(gameMap.x,gameMap.y);
 		}
