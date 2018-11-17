@@ -87,14 +87,20 @@
 			}
 			
 			if(isKeyDown(87)) {//w key for foward
-				playerS.ship.velx+= Math.cos(playerS.ship.rotation);
-				playerS.ship.vely+= Math.sin(playerS.ship.rotation);
+				playerS.ship.velx+= Math.cos(Ship.radians(playerS.ship.rotation));
+				playerS.ship.vely+= Math.sin(Ship.radians(playerS.ship.rotation));
 			}
 			
 			if(isKeyDown(68)) {//d key to rotate right
-				playerS.ship.rotx+= Math.PI(playerS.ship.rotation);
-				playerS.ship.rotx+= Math.PI(playerS.ship.rotation);
+				playerS.ship.rotation += 2;
+				
 			}
+			
+			if(isKeyDown(65)) {//a key to rotate left
+				playerS.ship.rotation += -2;
+				
+			}
+			
 			moveCamera();
 			movingBackground.update(gameMap.x,gameMap.y);
 		}
@@ -103,8 +109,8 @@
 		{
 			if(agents.length>0)
 			{
-				gameMap.x=-agents[0].x +stage.stageWidth/2;
-				gameMap.y=-agents[0].y +stage.stageHeight/2;
+				gameMap.x=-playerS.x +stage.stageWidth/2;
+				gameMap.y=-playerS.y +stage.stageHeight/2;
 			}
 			testMouseLoc()
 		}
