@@ -59,7 +59,9 @@
 			playerS.ship.x=100;
 			pirateS.ship.x=-100;
 			agents.push(pirateS.ship.myAgent);
-			
+			pirateS.ship.myAgent.targetX=500;
+			pirateS.ship.myAgent.targetY=500;
+			pirateS.ship.myAgent.setState(Agent.MOVETO);
 			addEventListener(Event.ENTER_FRAME, gameloop);
 			/*for (var i:int = 0; i < 1; i++) 
 			{
@@ -84,6 +86,7 @@
 			agents.push(a);
 			a.x = mouseX-gameMap.x;
 			a.y = mouseY-gameMap.y;
+
 		}
 		
 		private function gameloop(e:Event):void 

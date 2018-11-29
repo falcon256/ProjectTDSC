@@ -59,8 +59,9 @@ package game {
 			if(!isPlayer)
 			{
 				myAgent.update();
-				this.velx+=myAgent.velocity.x*0.001;
-				this.vely+=myAgent.velocity.y*0.001;
+				
+				this.velx+=myAgent.velocity.x*0.05;
+				this.vely+=myAgent.velocity.y*0.05;
 				myAgent.x=this.x;
 				myAgent.y=this.y;
 				this.rotation += degrees(Math.atan2(vely,velx)) * 0.1;

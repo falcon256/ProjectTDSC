@@ -6,6 +6,7 @@
 	import agent.states.IAgentState;
 	import agent.states.IdleState;
 	import agent.states.WanderState;
+	import agent.states.MoveToState;
 	import flash.display.Graphics;
 	import flash.display.Shape;
 	import flash.display.Sprite;
@@ -21,6 +22,7 @@
 		public static const CHASE:IAgentState = new ChaseState();
 		public static const FLEE:IAgentState = new FleeState();
 		public static const CONFUSED:IAgentState = new ConfusionState();
+		public static const MOVETO:IAgentState = new MoveToState();
 		
 		private const RAD_DEG:Number = 180 / Math.PI;
 		
@@ -34,6 +36,9 @@
 		public var fleeRadius:Number = 50; //If the mouse is "seen" within this radius, we want to flee
 		public var chaseRadius:Number = 150; //If the mouse is "seen" within this radius, we want to chase
 		public var numCycles:int = 0; //Number of updates that have executed for the current state. Timing utility.
+		
+		public var targetX:Number=0;
+		public var targetY:Number=0;
 		
 		public function Agent() 
 		{
@@ -58,7 +63,7 @@
 			graphics.lineStyle(0, 0x00FF00,.2);
 			graphics.drawCircle(0, 0, chaseRadius);
 			
-			_currentState = IDLE; //Set the initial state
+			_currentState = MOVETO; //Set the initial state
 		}
 		/**
 		 * Outputs a line of text above the agent's head
@@ -83,6 +88,17 @@
 			return Math.sqrt(dx * dx + dy * dy);
 		}
 		
+		public static function distance1(x1:Number,y1:Number):Number
+		{
+			return Math.sqrt(((x1)*(x1))+((y1)*(y1)));
+		}
+		
+		public static function distance2(x1:Number,y1:Number,x2:Number,y2:Number):Number
+		{
+			return Math.sqrt(((x1-x2)*(x1-x2))+((y1-y2)*(y1-y2)));
+		}
+		
+		
 		public function randomDirection():void {
 			var a:Number = Math.random() * 6.28;
 			velocity.x = Math.cos(a);
@@ -100,22 +116,22 @@
 		 * Update the current state, then update the graphics
 		 */
 		public function update():void {
-			if (!_currentState) return; //If there's no behavior, we do nothing
+			
+			if (!_currentState)
+			{
+				trace("Agent has no state");
+				return; //If there's no behavior, we do nothing
+			}
 			numCycles++; 
 			_currentState.update(this);
 			x += velocity.x;//*speed;
 			y += velocity.y;//*speed;
-			if (x + velocity.x > stage.stageWidth || x + velocity.x < 0) {
-				x = Math.max(-GameParameters.GAME_MAX_DIMENSIONS, Math.min(GameParameters.GAME_MAX_DIMENSIONS, x));
-				velocity.x *= -1;
-			}
-			if (y + velocity.y > stage.stageHeight || y + velocity.y < 0) {
-				y = Math.max(-GameParameters.GAME_MAX_DIMENSIONS, Math.min(GameParameters.GAME_MAX_DIMENSIONS, y));
-				velocity.y *= -1;
-			}
+			
+
 			_pointer.rotation = RAD_DEG * Math.atan2(velocity.y, velocity.x);
 		}
 		public function setState(newState:IAgentState):void {
+			trace(_currentState);
 			if (_currentState == newState) return;
 			if (_currentState) {
 				_currentState.exit(this);
