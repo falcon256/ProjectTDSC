@@ -80,7 +80,7 @@ package game {
 			testForCollisions();
 		}
 		
-		public function testForCollisions()
+		private function testForCollisions()
 		{
 			for each (var s in Main.getSingleton().getShipsList())
 			{
@@ -89,8 +89,17 @@ package game {
 					var vx:Number = s.velx - this.velx;
 					var vy:Number = s.vely - this.vely;
 					trace("Collision - Velocity = " + vx + " " + vy);
+					doCollision(this,s,vx,vy);
 				}
 			}
+		}
+		
+		private function doCollision(s1:Ship, s2:Ship, vx:Number, vy:Number)
+		{
+			s1.velx+=vx;
+			s1.vely+=vy;
+			s2.velx-=vx;
+			s2.vely-=vy;
 		}
 		
 		public static function distance(x1:Number,y1:Number,x2:Number,y2:Number):Number

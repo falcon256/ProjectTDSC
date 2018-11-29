@@ -53,9 +53,11 @@
 			gameMap.addChild(playerS);
 			gameMap.addChild(pirateS);
 			ships.push(playerS.ship);
-			ships.push(pirateS.ship);
+			ships.push(pirateS.ship);			
 			gameMap.addChild(playerS.ship.myAgent);
 			gameMap.addChild(pirateS.ship.myAgent);
+			playerS.ship.x=100;
+			pirateS.ship.x=-100;
 			agents.push(pirateS.ship.myAgent);
 			
 			addEventListener(Event.ENTER_FRAME, gameloop);
