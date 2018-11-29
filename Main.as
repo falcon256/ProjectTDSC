@@ -23,9 +23,14 @@
 		var playerS:PlayerShip = new PlayerShip();
 		//player input key data
 		private var hashKeys:Object = {};
+		private static var mainSingleton:Main = null;
 		
 		public function Main():void 
 		{
+			if(mainSingleton==null)
+				mainSingleton = this;
+			else
+				return;
 			if (stage) init();
 			else addEventListener(Event.ADDED_TO_STAGE, init);
 			sGameMap = gameMap;
@@ -138,7 +143,16 @@
 		private function isKeyDown(code:int):Boolean {
 			return hashKeys[code] !== undefined;
 		}
-
+		
+		public static function getSingleton():Main
+		{
+			return mainSingleton;
+		}
+		
+		public function getShipsList():Vector.<Ship>
+		{
+			return ships;
+		}
 	}
 	
 }

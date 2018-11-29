@@ -10,9 +10,12 @@ package game {
 		
 		public var velx:Number=0;
 		public var vely:Number=0;
+		public var velrot:Number=0;
 		public var x:Number=0;
 		public var y:Number=0;
 		public var rotation:Number=0;
+		public var size:Number = 20;
+		
 		//basic ship stats
 		public var maxHull:Number=100;
 		public var hull:Number=100;
@@ -66,15 +69,34 @@ package game {
 			
 			this.x+=velx;
 			this.y+=vely;
+			velx*=0.99;
+			vely*=0.99;
 			//this.rotation+= myAgent.rotation*0.01;
 			//this.rotation-= 0.01;
-			trace("Ship Update " + this.x + " " + this.y);
+			//trace("Ship Update " + this.x + " " + this.y);
 			myImage.x=this.x;
 			myImage.y=this.y;
 			myImage.rotation = this.rotation;
+			testForCollisions();
 		}
 		
+		public function testForCollisions()
+		{
+			for each (var s in Main.getSingleton().getShipsList())
+			{
+				if(s!=this&&distance(s.x,s.y,this.x,this.y)<s.size+this.size)
+				{					
+					var vx:Number = s.velx - this.velx;
+					var vy:Number = s.vely - this.vely;
+					trace("Collision - Velocity = " + vx + " " + vy);
+				}
+			}
+		}
 		
+		public static function distance(x1:Number,y1:Number,x2:Number,y2:Number):Number
+		{
+			return Math.sqrt(((x1-x2)*(x1-x2))+((y1-y2)*(y1-y2)));
+		}
 		
 		//stolen and generic
 		public static function degrees(radians:Number):Number
