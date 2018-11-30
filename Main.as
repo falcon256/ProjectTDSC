@@ -21,7 +21,7 @@
 		private var ships:Vector.<Ship>;
 		public static var sGameMap:MovieClip = null;
 		public static var targetingCursor:TargetingReticle = null;
-		var playerS:PlayerShip = new PlayerShip();
+		public var playerS:PlayerShip = new PlayerShip();
 		//player input key data
 		private var hashKeys:Object = {};
 		private static var mainSingleton:Main = null;
