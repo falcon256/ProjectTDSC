@@ -7,6 +7,9 @@
 	import agent.states.IdleState;
 	import agent.states.WanderState;
 	import agent.states.MoveToState;
+	import agent.states.GrabShipState;
+	import agent.states.AttackState;
+	import agent.states.SalvageState;
 	import flash.display.Graphics;
 	import flash.display.Shape;
 	import flash.display.Sprite;
@@ -15,6 +18,8 @@
 	import flash.text.TextFieldAutoSize;
 	import flash.text.TextFormat;
 	import game.GameParameters;
+	import game.Ship;
+
 	public class Agent extends Sprite
 	{
 		public static const IDLE:IAgentState = new IdleState(); //Define possible states as static constants
@@ -23,6 +28,9 @@
 		public static const FLEE:IAgentState = new FleeState();
 		public static const CONFUSED:IAgentState = new ConfusionState();
 		public static const MOVETO:IAgentState = new MoveToState();
+		public static const ATTACK:IAgentState = new AttackState();
+		public static const GRABSHIP:IAgentState = new GrabShipState();
+		public static const SALVAGE:IAgentState = new SalvageState();
 		
 		private const RAD_DEG:Number = 180 / Math.PI;
 		
@@ -32,14 +40,13 @@
 		private var _tf:TextField;
 		public var velocity:Point = new Point();
 		public var speed:Number = 0;
-		
 		public var fleeRadius:Number = 50; //If the mouse is "seen" within this radius, we want to flee
 		public var chaseRadius:Number = 150; //If the mouse is "seen" within this radius, we want to chase
 		public var numCycles:int = 0; //Number of updates that have executed for the current state. Timing utility.
 		
 		public var targetX:Number=0;
 		public var targetY:Number=0;
-		
+		public var target:Ship = null;
 		public function Agent() 
 		{
 			//Boring stuff here
