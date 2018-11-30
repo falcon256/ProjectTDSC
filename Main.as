@@ -11,6 +11,7 @@
 	import game.PlayerShip;
 	import game.PirateShip;
 	import game.Ship;
+	import game.Station;
 	
 	
 	[SWF(backgroundColor="0x000000")]
@@ -25,6 +26,10 @@
 		private var hashKeys:Object = {};
 		private static var mainSingleton:Main = null;
 		
+		
+		
+		//Reid and Ross additions
+		public var shopstation:Station = new Station();
 		public function Main():void 
 		{
 			if(mainSingleton==null)
@@ -52,16 +57,27 @@
 			var pirateS:PirateShip = new PirateShip();
 			gameMap.addChild(playerS);
 			gameMap.addChild(pirateS);
+			
 			ships.push(playerS.ship);
-			ships.push(pirateS.ship);			
+			ships.push(pirateS.ship);	
+			
 			gameMap.addChild(playerS.ship.myAgent);
 			gameMap.addChild(pirateS.ship.myAgent);
+			
 			playerS.ship.x=100;
 			pirateS.ship.x=-100;
+			
 			agents.push(pirateS.ship.myAgent);
+			
 			pirateS.ship.myAgent.targetX=500;
 			pirateS.ship.myAgent.targetY=500;
 			pirateS.ship.myAgent.setState(Agent.MOVETO);
+			
+			gameMap.addChild(shopstation);
+			shopstation.x = 250;
+			shopstation.y = 250;
+			
+			
 			addEventListener(Event.ENTER_FRAME, gameloop);
 			/*for (var i:int = 0; i < 1; i++) 
 			{
@@ -110,6 +126,11 @@
 				playerS.ship.rotation += -2;
 				
 			}
+			if(isKeyDown(83)){//s key to reverse 
+					playerS.ship.velx-= Math.cos(Ship.radians(playerS.ship.rotation));
+					playerS.ship.vely-= Math.sin(Ship.radians(playerS.ship.rotation));
+			}
+			
 			
 			moveCamera();
 			movingBackground.update(gameMap.x,gameMap.y);

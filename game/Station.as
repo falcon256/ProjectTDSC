@@ -1,5 +1,6 @@
 ﻿package game {
 	
+	import Main;
 	import flash.display.MovieClip;
 	import flash.events.MouseEvent;
 	import flash.events.Event;
@@ -17,14 +18,14 @@
 		}
 		
 		private function dockship(event:Event):void {
-			if (( Math.abs( ship.x-station.x) < 20)&&
-			(Math.abs( ship.y-station.y) < 20))
+			if (( Math.abs( playerS.ship.x-station.x) < 20)&&
+			(Math.abs( playerS.ship.y-station.y) < 20))
 			{
-				
+				trace("Hi");
 			
-			addChild(GrabShip)
+			/*addChild(GrabShip)
 			GrabShip.x = station.x + 5;
-			GrabShip.y = station.y + 5;
+			GrabShip.y = station.y + 5;*/
 				}
 			
 			GrabShip.addEventListener(MouseEvent.CLICK, openmenu);//change to keyboard event we use mouse to fire
