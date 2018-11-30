@@ -46,7 +46,9 @@
 			removeChild(SScreen);
 			trace("Here");
 			
+			
 			addChild(DScreen);
+			DScreen.BackBtn.addEventListener(MouseEvent.CLICK, createStartMenu);
 		}
 		
 		private function exitScreen(evt:MouseEvent):void{
