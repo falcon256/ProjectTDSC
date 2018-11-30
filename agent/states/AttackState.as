@@ -8,33 +8,33 @@
 		//////////////////////////////////////////////TODOTODOTODOTODO
 		public function update(a:Agent):void
 		{
-			var dx:Number =  a.targetX - a.x;
-			var dy:Number =  a.targetY - a.y;
+			var dx:Number =  a.target.x - a.x;
+			var dy:Number =  a.target.y - a.y;
 			var dist:Number = Agent.distance1(dx,dy);
 			a.velocity.x = (dx/dist)*a.speed;
 			a.velocity.y = (dy/dist)*a.speed;
-			a.say("Moving...");
+			a.say("Attacking...");
 			a.speed = 2;
 			
-			if(Agent.distance1(dx,dy) < 1)
+			if(a.target.hull <=0)
 			{
 				a.setState(Agent.IDLE);
-				a.say("Arrived!");
-				trace("Arrived!");
+				a.say("Killed!");
+				trace("Killed!");
 			}
 			
 			//debug output
-			trace("Moving, distance is: "+Agent.distance1(dx,dy));
+			//trace("Attacking, distance is: "+Agent.distance1(dx,dy));
 		}
 		
 		public function enter(a:Agent):void
 		{
-			var dx:Number =  a.targetX - a.x;
-			var dy:Number =  a.targetY - a.y;
+			var dx:Number =  a.target.x - a.x;
+			var dy:Number =  a.target.y - a.y;
 			var dist:Number = Agent.distance1(dx,dy);
 			a.velocity.x = (dx/dist)*a.speed;
 			a.velocity.y = (dy/dist)*a.speed;
-			a.say("Moving to coords "+a.targetX+" "+a.targetY);
+			a.say("Attacking target at "+a.target.x+" "+a.target.y);
 			a.speed = 0;
 		}
 		
