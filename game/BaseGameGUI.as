@@ -26,8 +26,8 @@
 				text_Rep.text = "Reputation: "+rep;
 				text_Cash.text = "Cash: "+cash;
 			}
-			Main.targetingCursor.x = mouseX;//(mouseX+Main.sGameMap.x);
-			Main.targetingCursor.y = mouseY;//(mouseY+Main.sGameMap.y);
+			Main.targetingCursor.x = mouseX + 700;//(mouseX+Main.sGameMap.x);
+			Main.targetingCursor.y = mouseY + 625;//(mouseY+Main.sGameMap.y);
 		}
 	}
 	
