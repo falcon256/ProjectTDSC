@@ -113,22 +113,22 @@
 			}
 			
 			if(isKeyDown(87)) {//w key for foward
-				playerS.ship.velx+= Math.cos(Ship.radians(playerS.ship.rotation));
-				playerS.ship.vely+= Math.sin(Ship.radians(playerS.ship.rotation));
+				playerS.ship.velx+= 0.5 * Math.cos(Ship.radians(playerS.ship.rotation));
+				playerS.ship.vely+= 0.5 * Math.sin(Ship.radians(playerS.ship.rotation));
 			}
 			
 			if(isKeyDown(68)) {//d key to rotate right
-				playerS.ship.rotation += 2;
+				playerS.ship.rotation += 4;
 				
 			}
 			
 			if(isKeyDown(65)) {//a key to rotate left
-				playerS.ship.rotation += -2;
+				playerS.ship.rotation += -4;
 				
 			}
 			if(isKeyDown(83)){//s key to reverse 
-					playerS.ship.velx-= Math.cos(Ship.radians(playerS.ship.rotation));
-					playerS.ship.vely-= Math.sin(Ship.radians(playerS.ship.rotation));
+					playerS.ship.velx-= 0.4 * Math.cos(Ship.radians(playerS.ship.rotation));
+					playerS.ship.vely-= 0.4 * Math.sin(Ship.radians(playerS.ship.rotation));
 			}
 			
 			
