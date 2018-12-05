@@ -12,7 +12,7 @@
 	import game.PirateShip;
 	import game.Ship;
 	import game.Station;
-	
+	import flash.system.fscommand;
 	
 	[SWF(backgroundColor="0x000000")]
 	public class Main extends Sprite 
@@ -25,7 +25,8 @@
 		//player input key data
 		private var hashKeys:Object = {};
 		private static var mainSingleton:Main = null;
-		
+		private var SScreen:MainMenu = new MainMenu();
+		private var DScreen:Directions = new Directions();	
 		
 		
 		//Reid and Ross additions
@@ -40,6 +41,32 @@
 			else addEventListener(Event.ADDED_TO_STAGE, init);
 			sGameMap = gameMap;
 			targetingCursor = targetingReticle;
+			stage.scaleMode = StageScaleMode.NO_SCALE;
+			
+			createStartMenu();
+		}
+		private function createStartMenu():void{
+			
+			
+			addChild(SScreen);
+			
+			
+			
+			
+			SScreen.StartBtn.addEventListener(MouseEvent.CLICK, startGame);//Links the button press to the intro clip
+			SScreen.DirectionsBtn.addEventListener(MouseEvent.CLICK, directionsScreen);
+			SScreen.ExitBtn.addEventListener(MouseEvent.CLICK, exitScreen);
+		}
+		
+		private function startGame(evt:MouseEvent):void
+		{	
+			removeChild(SScreen);//removes start screen
+			
+			
+			createGame();//runs game
+			
+			
+		
 		}
 		
 		private function init(e:Event = null):void 
@@ -178,6 +205,25 @@
 		public function getShipsList():Vector.<Ship>
 		{
 			return ships;
+		}
+		private function directionsScreen(evt:MouseEvent):void
+		{
+			removeChild(SScreen);
+			trace("Here");
+			
+			
+			addChild(DScreen);
+			DScreen.BackBtn.addEventListener(MouseEvent.CLICK, createStartMenu);
+		}
+		
+		private function exitScreen(evt:MouseEvent):void{
+			fscommand("quit");
+			trace("If this was an exe I believe I would quit!!");
+		}
+		
+		private function createGame():void
+		{
+			trace("hi");
 		}
 	}
 	
