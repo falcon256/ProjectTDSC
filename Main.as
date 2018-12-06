@@ -140,10 +140,13 @@
 			
 			alienS.ship.myAgent.targetX=150;
 			alienS.ship.myAgent.targetY=150;
-			alienS.ship.myAgent.target=policeS.ship;
+			alienS.ship.myAgent.target=playerS.ship;
 			alienS.ship.myAgent.setState(Agent.ATTACK);
 			
-			
+			alienS.ship.myAgent.x=50;
+			alienS.ship.myAgent.y=500;
+			alienS.ship.x=50;
+			alienS.ship.y=500;
 			
 			
 			

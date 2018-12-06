@@ -86,14 +86,15 @@ package game {
 			if(!isPlayer)
 			{
 				myAgent.update();
-				
+				trace(this.velx + " av: " + myAgent.velocity.x);
 				this.velx+=myAgent.velocity.x*0.05;
 				this.vely+=myAgent.velocity.y*0.05;
+				trace(this.velx);
 				myAgent.x=this.x;
 				myAgent.y=this.y;
-				
+				trace(this.velx);
 				//WOW
-				var targetrotation = myAgent.targetRotation;
+				var targetrotation = degrees(myAgent.targetRotation);
 				//var targetrotation:Number = degrees(Math.atan2(vely,velx));
 				this.rotation+=(180/Math.PI)*Math.atan2((Math.cos(this.rotation*Math.PI/180)*Math.sin(targetrotation*Math.PI/180)-Math.sin(this.rotation*Math.PI/180)*Math.cos(targetrotation*Math.PI/180)),(Math.sin(this.rotation*Math.PI/180)*Math.sin(targetrotation*Math.PI/180)+Math.cos(this.rotation*Math.PI/180)*Math.cos(targetrotation*Math.PI/180)))/20;
 				

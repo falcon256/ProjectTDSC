@@ -61,6 +61,8 @@
 			_tf.autoSize = TextFieldAutoSize.LEFT;
 			_pointer = new Shape();
 			var g:Graphics = _pointer.graphics;
+			velocity.x=0;
+			velocity.y=0;
 			/*
 			g.beginFill(0xFFFFFF);
 			g.drawCircle(0, 0, 5);
