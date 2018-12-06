@@ -14,6 +14,8 @@
 	import game.AlienShip;
 	import game.Ship;
 	import game.Station;
+	import game.PirateStation;
+	import game.AlienStation;
 	import flash.system.fscommand;
 	import flash.ui.Mouse;
 	
@@ -88,6 +90,7 @@
 			var pirateS:PirateShip = new PirateShip();
 			var policeS:PoliceShip = new PoliceShip();
 			var alienS:AlienShip = new AlienShip();
+			
 		
 			
 			gameMap.addChild(playerS);
@@ -111,7 +114,7 @@
 			playerS.ship.x=100;
 			pirateS.ship.x=-100;
 			for (var i:uint = 0; i < 20; i++){
-				trace("hello");
+				
 				var stationS:Station = new Station();
 				gameMap.addChild(stationS);
 				ships.push(stationS.ship);
@@ -122,6 +125,32 @@
 				stationS.ship.myAgent.targetX = 300;
 				stationS.ship.myAgent.targetY = 300;
 				stationS.ship.myAgent.setState(Agent.STATION);
+			}
+			for (i = 0; i < 20; i++){
+				
+				var pstationS:PirateStation = new PirateStation();
+				gameMap.addChild(pstationS);
+				ships.push(pstationS.ship);
+				gameMap.addChild(pstationS.ship.myAgent);
+				agents.push(pstationS.ship.myAgent);
+				pstationS.ship.x= Math.random() * 10000;
+				pstationS.ship.y= Math.random() * 10000;
+				pstationS.ship.myAgent.targetX = 300;
+				pstationS.ship.myAgent.targetY = 300;
+				pstationS.ship.myAgent.setState(Agent.STATION);
+			}
+			for ( i = 0; i < 20; i++){
+				
+				var astationS:AlienStation = new AlienStation();
+				gameMap.addChild(astationS);
+				ships.push(astationS.ship);
+				gameMap.addChild(astationS.ship.myAgent);
+				agents.push(astationS.ship.myAgent);
+				astationS.ship.x= Math.random() * 10000;
+				astationS.ship.y= Math.random() * 10000;
+				astationS.ship.myAgent.targetX = 300;
+				astationS.ship.myAgent.targetY = 300;
+				astationS.ship.myAgent.setState(Agent.STATION);
 			}
 			agents.push(pirateS.ship.myAgent);
 			agents.push(policeS.ship.myAgent);

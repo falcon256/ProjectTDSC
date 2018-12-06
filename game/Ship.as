@@ -47,6 +47,9 @@ package game {
 		public var isAlien:Boolean=false;
 		public var isPirate:Boolean=false;
 		public var isStation:Boolean = false;
+		public var isPirateStation:Boolean = false;
+		public var isAlienStation:Boolean = false;
+		
 		
 		public var velDeltaX:Number=0;
 		public var velDeltaY:Number=0;
