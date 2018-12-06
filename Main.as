@@ -34,6 +34,7 @@
 		private var SScreen:MainMenu = new MainMenu();
 		private var DScreen:Directions = new Directions();	
 		private var isStarted:Boolean = false;
+		public var hud:GameHud = new GameHud();
 		
 		//Reid and Ross additions
 		
@@ -110,7 +111,8 @@
 			gameMap.addChild(policeS.ship.myAgent);
 			gameMap.addChild(alienS.ship.myAgent);
 			
-			
+			addChild(hud);
+			hud.y = 300;
 			playerS.ship.x=100;
 			pirateS.ship.x=-100;
 			for (var i:uint = 0; i < 20; i++){
