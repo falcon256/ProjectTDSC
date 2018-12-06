@@ -51,6 +51,10 @@ package game {
 		public var velDeltaX:Number=0;
 		public var velDeltaY:Number=0;
 		
+		public var railgunTimer:Number = 0;
+		public var laserTimer:Number = 0;
+		public var missileTimer:Number = 0;
+		
 		public function Ship()
 		{
 			myAgent = new Agent();
@@ -71,6 +75,12 @@ package game {
 			sm.x=this.x-this.myImage.width/2;
 			sm.y=this.y-this.myImage.height/2;
 			
+			if(railgunTimer>0)
+				railgunTimer--;
+			if(laserTimer>0)
+				laserTimer--;
+			if(missileTimer>0)
+				laserTimer--;
 			
 			if(!isPlayer)
 			{
@@ -107,6 +117,12 @@ package game {
 			testForCollisions();
 			velDeltaX = Math.abs(lastVelX-this.velx);
 			velDeltaY = Math.abs(lastVelY-this.vely);
+			
+			if(hull<0)
+			{
+				Main.getSingleton().removeShip(this);
+			}
+			
 			
 		}
 		
@@ -164,6 +180,27 @@ package game {
 		{
 			return degrees * Math.PI / 180;
 		}		
+		
+		public function fireRailgun()
+		{
+			if(railgunTimer<=0)
+			{
+				railgunTimer+=10;
+				var pew:RailgunRound = new RailgunRound(this);
+				trace("pew");
+				this.myImage.parent.addChild(pew);
+				pew.rotation = this.myImage.rotation;
+				pew.velx = this.velx + Math.cos(Ship.radians(this.rotation))*20;
+				pew.vely = this.vely + Math.sin(Ship.radians(this.rotation))*20;
+				pew.lifetime=100;
+				pew.sizeDelta=0.01;
+				pew.alphaDelta=0.01;
+				pew.x=this.x;
+				pew.y=this.y;
+				
+			}
+		}
+				
 		
 	}
 	

@@ -22,6 +22,7 @@
 	{
 		private var agents:Vector.<Agent>;
 		private var ships:Vector.<Ship>;
+		
 		public static var sGameMap:MovieClip = null;
 		public static var targetingCursor:TargetingReticle = null;
 		public var playerS:PlayerShip = new PlayerShip();
@@ -194,6 +195,9 @@
 					playerS.ship.vely-= 0.4 * Math.sin(Ship.radians(playerS.ship.rotation));
 			}
 			
+			if(isKeyDown(32)){//space for railing
+					playerS.ship.fireRailgun();
+			}
 			
 			moveCamera();
 			movingBackground.update(gameMap.x,gameMap.y);
@@ -268,7 +272,18 @@
 			trace("hi");
 		}
 		
-		//private function fireRailgun(
+		public function removeShip(s:Ship)
+		{
+			trace("Test");
+			//stolen from the web
+			for (var i:int = 0; i < ships.length; i++) 
+			{
+				 if (s == ships[i])
+					  ships.splice(i,1);
+			}
+			s.myImage.parent.removeChild(s.myImage);
+		}
+		
 	}
 	
 }
