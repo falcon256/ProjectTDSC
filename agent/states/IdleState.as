@@ -1,4 +1,4 @@
-package agent.states 
+﻿package agent.states 
 {
 	import agent.Agent;
 	public class IdleState implements IAgentState
@@ -8,9 +8,16 @@ package agent.states
 		
 		public function update(a:Agent):void
 		{
-			if (a.numCycles > 30) {
-				a.setState(Agent.WANDER);
+			
+			if(a.myShip.isTrader)
+			{
+				//var ships:Vector.<Ship> = Main.getSingleton().getShipsList();
+				//var options:Vector.<Ship> = new Vector.<Ship>();
+				//find another space station to move to.
+				//for( int i = 0 ; i < ships.
 			}
+			
+			
 		}
 		
 		public function enter(a:Agent):void

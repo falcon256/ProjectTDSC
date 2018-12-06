@@ -113,44 +113,80 @@
 			
 			playerS.ship.x=100;
 			pirateS.ship.x=-100;
-			for (var i:uint = 0; i < 20; i++){
-				
-				var stationS:Station = new Station();
-				gameMap.addChild(stationS);
-				ships.push(stationS.ship);
-				gameMap.addChild(stationS.ship.myAgent);
-				agents.push(stationS.ship.myAgent);
-				stationS.ship.x= Math.random() * 10000;
-				stationS.ship.y= Math.random() * 10000;
-				stationS.ship.myAgent.targetX = 300;
-				stationS.ship.myAgent.targetY = 300;
-				stationS.ship.myAgent.setState(Agent.STATION);
+			var posx:Number = Math.random() * 10000;
+			var posy:Number = Math.random() * 10000;
+			var good:Boolean = true;
+			var n:int = 0;
+			var i:uint = 0;
+			for (i = 0; i < 20; i++){
+				posx = Math.random() * 10000;
+				posy = Math.random() * 10000;
+				good = true;
+
+				for (n = 0; n < ships.length; n++) 
+				{
+					if(distance(posx,posy,ships[n].x,ships[n].y)<500)
+						good=false;
+				}
+				if(good)
+				{
+					var stationS:Station = new Station();
+					gameMap.addChild(stationS);
+					ships.push(stationS.ship);
+					gameMap.addChild(stationS.ship.myAgent);
+					agents.push(stationS.ship.myAgent);
+					stationS.ship.x= posx;
+					stationS.ship.y= posy;
+					stationS.ship.myAgent.targetX = 300;
+					stationS.ship.myAgent.targetY = 300;
+					stationS.ship.myAgent.setState(Agent.STATION);
+				}
 			}
 			for (i = 0; i < 20; i++){
-				
-				var pstationS:PirateStation = new PirateStation();
-				gameMap.addChild(pstationS);
-				ships.push(pstationS.ship);
-				gameMap.addChild(pstationS.ship.myAgent);
-				agents.push(pstationS.ship.myAgent);
-				pstationS.ship.x= Math.random() * 10000;
-				pstationS.ship.y= Math.random() * 10000;
-				pstationS.ship.myAgent.targetX = 300;
-				pstationS.ship.myAgent.targetY = 300;
-				pstationS.ship.myAgent.setState(Agent.STATION);
+				posx = Math.random() * 10000;
+				posy = Math.random() * 10000;
+				good = true;
+				for (n = 0; n < ships.length; n++) 
+				{
+					if(distance(posx,posy,ships[n].x,ships[n].y)<500)
+						good=false;
+				}
+				if(good)
+				{
+					var pstationS:PirateStation = new PirateStation();
+					gameMap.addChild(pstationS);
+					ships.push(pstationS.ship);
+					gameMap.addChild(pstationS.ship.myAgent);
+					agents.push(pstationS.ship.myAgent);
+					pstationS.ship.x= posx;
+					pstationS.ship.y= posy;
+					pstationS.ship.myAgent.targetX = 300;
+					pstationS.ship.myAgent.targetY = 300;
+					pstationS.ship.myAgent.setState(Agent.STATION);
+				}
 			}
-			for ( i = 0; i < 20; i++){
-				
-				var astationS:AlienStation = new AlienStation();
-				gameMap.addChild(astationS);
-				ships.push(astationS.ship);
-				gameMap.addChild(astationS.ship.myAgent);
-				agents.push(astationS.ship.myAgent);
-				astationS.ship.x= Math.random() * 10000;
-				astationS.ship.y= Math.random() * 10000;
-				astationS.ship.myAgent.targetX = 300;
-				astationS.ship.myAgent.targetY = 300;
-				astationS.ship.myAgent.setState(Agent.STATION);
+			for (i = 0; i < 20; i++){
+				posx = Math.random() * 10000;
+				posy = Math.random() * 10000;
+				good = true;
+				for (n = 0; n < ships.length; n++) 
+				{
+					if(distance(posx,posy,ships[n].x,ships[n].y)<500)
+						good=false;
+				}
+				if(good)
+				{
+					var astationS:AlienStation = new AlienStation();
+					gameMap.addChild(astationS);
+					ships.push(astationS.ship);
+					gameMap.addChild(astationS.ship.myAgent);
+					agents.push(astationS.ship.myAgent);
+					astationS.ship.x= posx;
+					astationS.ship.y= posy;
+					astationS.ship.myAgent.targetX = 300;
+					astationS.ship.myAgent.targetY = 300;
+					astationS.ship.myAgent.setState(Agent.STATION);
+				}
 			}
 			agents.push(pirateS.ship.myAgent);
 			agents.push(policeS.ship.myAgent);
@@ -322,6 +358,10 @@
 					  ships.splice(i,1);
 			}
 			s.myImage.parent.removeChild(s.myImage);
+		}
+		public static function distance(x1:Number,y1:Number,x2:Number,y2:Number):Number
+		{
+			return Math.sqrt(((x1-x2)*(x1-x2))+((y1-y2)*(y1-y2)));
 		}
 		
 	}
