@@ -13,6 +13,7 @@
 	import game.Ship;
 	import game.Station;
 	import flash.system.fscommand;
+	import flash.ui.Mouse;
 	
 	[SWF(backgroundColor="0x000000")]
 	public class Main extends Sprite 
@@ -27,7 +28,7 @@
 		private static var mainSingleton:Main = null;
 		private var SScreen:MainMenu = new MainMenu();
 		private var DScreen:Directions = new Directions();	
-		
+		private var isStarted:Boolean = false;
 		
 		//Reid and Ross additions
 		public var shopstation:Station = new Station();
@@ -42,7 +43,7 @@
 			sGameMap = gameMap;
 			targetingCursor = targetingReticle;
 			stage.scaleMode = StageScaleMode.NO_SCALE;
-			
+			Mouse.show();
 			createStartMenu();
 		}
 		private function createStartMenu():void{
@@ -61,8 +62,8 @@
 		private function startGame(evt:MouseEvent):void
 		{	
 			removeChild(SScreen);//removes start screen
-			
-			
+			Mouse.hide();
+			isStarted=true;
 			createGame();//runs game
 			
 			
@@ -134,6 +135,8 @@
 		
 		private function gameloop(e:Event):void 
 		{
+			if(!isStarted)
+				return;
 			for (var i:int = 0; i < ships.length; i++) 
 			{
 				ships[i].doUpdate();
@@ -213,9 +216,15 @@
 			
 			
 			addChild(DScreen);
-			DScreen.BackBtn.addEventListener(MouseEvent.CLICK, createStartMenu);
+			DScreen.BackBtn.addEventListener(MouseEvent.CLICK, directionsScreenClose);
 		}
 		
+		private function directionsScreenClose(evt:MouseEvent):void
+		{			
+			trace("There");	
+			removeChild(DScreen);
+			addChild(SScreen);
+		}
 		private function exitScreen(evt:MouseEvent):void{
 			fscommand("quit");
 			trace("If this was an exe I believe I would quit!!");
