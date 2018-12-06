@@ -41,6 +41,7 @@
 		private var _pointer:Shape;
 		private var _tf:TextField;
 		public var velocity:Point = new Point();
+		public var targetRotation:Number = 0;
 		public var speed:Number = 0;
 		public var fleeRadius:Number = 50; //If the mouse is "seen" within this radius, we want to flee
 		public var chaseRadius:Number = 150; //If the mouse is "seen" within this radius, we want to chase

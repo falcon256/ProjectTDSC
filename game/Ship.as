@@ -93,7 +93,8 @@ package game {
 				myAgent.y=this.y;
 				
 				//WOW
-				var targetrotation:Number = degrees(Math.atan2(vely,velx));
+				var targetrotation = myAgent.targetRotation;
+				//var targetrotation:Number = degrees(Math.atan2(vely,velx));
 				this.rotation+=(180/Math.PI)*Math.atan2((Math.cos(this.rotation*Math.PI/180)*Math.sin(targetrotation*Math.PI/180)-Math.sin(this.rotation*Math.PI/180)*Math.cos(targetrotation*Math.PI/180)),(Math.sin(this.rotation*Math.PI/180)*Math.sin(targetrotation*Math.PI/180)+Math.cos(this.rotation*Math.PI/180)*Math.cos(targetrotation*Math.PI/180)))/20;
 				
 				

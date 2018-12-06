@@ -22,7 +22,9 @@
 				a.say("Arrived!");
 				trace("Arrived!");
 			}
+			var tr:Number = Math.atan2(dy, dx);
 			
+			a.targetRotation=tr;
 			//debug output
 			trace("Moving, distance is: "+Agent.distance1(dx,dy));
 		}
