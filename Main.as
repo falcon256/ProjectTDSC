@@ -10,6 +10,8 @@
 	import flash.events.KeyboardEvent;
 	import game.PlayerShip;
 	import game.PirateShip;
+	import game.PoliceShip;
+	import game.AlienShip;
 	import game.Ship;
 	import game.Station;
 	import flash.system.fscommand;
@@ -83,24 +85,45 @@
 			//graphics.drawRect(0, 0, stage.stageWidth, stage.stageHeight);
 			
 			var pirateS:PirateShip = new PirateShip();
+			var pirateS:PirateShip = new PirateShip();
+			var alienS:AlienShip = new AlienShip();
+			
 			gameMap.addChild(playerS);
 			gameMap.addChild(pirateS);
+			gameMap.addChild(policeS);
+			gameMap.addChild(alienS);
 			
 			ships.push(playerS.ship);
 			ships.push(pirateS.ship);	
+			ships.push(policeS.ship);
+			ships.push(alienS.ship);
 			
 			gameMap.addChild(playerS.ship.myAgent);
 			gameMap.addChild(pirateS.ship.myAgent);
+			gameMap.addChild(policeS.ship.myAgent);
+			gameMap.addChild(alienS.ship.myAgent);
 			
 			playerS.ship.x=100;
 			pirateS.ship.x=-100;
 			
 			agents.push(pirateS.ship.myAgent);
+			agents.push(policeS.ship.myAgent);
+			agents.push(alienS.ship.myAgent);
 			
 			pirateS.ship.myAgent.targetX=500;
 			pirateS.ship.myAgent.targetY=500;
 			pirateS.ship.myAgent.target=playerS.ship;
 			pirateS.ship.myAgent.setState(Agent.ATTACK);
+			
+			policeS.ship.myAgent.targetX=250;
+			policeS.ship.myAgent.targetY=250;
+			policeS.ship.myAgent.target=pirateS.ship;
+			policeS.ship.myAgent.setState(Agent.ATTACK);
+			
+			alienS.ship.myAgent.targetX=150;
+			alienS.ship.myAgent.targetY=150;
+			alienS.ship.myAgent.target=policeS.ship;
+			alienS.ship.myAgent.setState(Agent.ATTACK);
 			
 			gameMap.addChild(shopstation);
 			shopstation.x = 250;
