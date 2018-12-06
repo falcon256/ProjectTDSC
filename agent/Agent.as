@@ -55,6 +55,7 @@
 			_tf.autoSize = TextFieldAutoSize.LEFT;
 			_pointer = new Shape();
 			var g:Graphics = _pointer.graphics;
+			/*
 			g.beginFill(0xFFFFFF);
 			g.drawCircle(0, 0, 5);
 			g.endFill();
@@ -68,7 +69,7 @@
 			graphics.lineStyle(0, 0xFF0000, .2);
 			graphics.drawCircle(0, 0, fleeRadius);
 			graphics.lineStyle(0, 0x00FF00,.2);
-			graphics.drawCircle(0, 0, chaseRadius);
+			graphics.drawCircle(0, 0, chaseRadius);*/
 			
 			_currentState = MOVETO; //Set the initial state
 		}

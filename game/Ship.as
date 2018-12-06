@@ -64,14 +64,24 @@ package game {
 				this.vely+=myAgent.velocity.y*0.05;
 				myAgent.x=this.x;
 				myAgent.y=this.y;
-				this.rotation += degrees(Math.atan2(vely,velx)) * 0.1;
+				this.rotation = degrees(Math.atan2(vely,velx));
+				/*
+				this.rotation += degrees(Math.atan2(vely,velx)) * 0.5;
 				this.rotation -= this.rotation * 0.1;
+				if(this.rotation>360)
+					this.rotation-=360;
+				if(this.rotation<0)
+					this.rotation+=360;*/
 			}
+			
+			//this.velx+= -this.x*0.001;
+			//this.vely+= -this.y*0.001;
+			
 			
 			this.x+=velx;
 			this.y+=vely;
-			velx*=0.99;
-			vely*=0.99;
+			velx*=0.999;
+			vely*=0.999;
 			//this.rotation+= myAgent.rotation*0.01;
 			//this.rotation-= 0.01;
 			//trace("Ship Update " + this.x + " " + this.y);

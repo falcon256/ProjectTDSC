@@ -99,7 +99,8 @@
 			
 			pirateS.ship.myAgent.targetX=500;
 			pirateS.ship.myAgent.targetY=500;
-			pirateS.ship.myAgent.setState(Agent.MOVETO);
+			pirateS.ship.myAgent.target=playerS.ship;
+			pirateS.ship.myAgent.setState(Agent.ATTACK);
 			
 			gameMap.addChild(shopstation);
 			shopstation.x = 250;
