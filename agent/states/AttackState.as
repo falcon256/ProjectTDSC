@@ -13,14 +13,14 @@
 			var dist:Number = Agent.distance1(dx,dy);
 			a.velocity.x = (dx/dist)*a.speed;
 			a.velocity.y = (dy/dist)*a.speed;
-			a.say("Attacking...");
+			//a.say("Attacking...");
 			a.speed = 1;
 			
 			if(a.target.hull <=0)
 			{
 				a.setState(Agent.IDLE);
-				a.say("Killed!");
-				trace("Killed!");
+				//a.say("Killed!");
+				//trace("Killed!");
 			}
 			
 			var tr:Number = Math.atan2(dy, dx);
@@ -42,7 +42,7 @@
 			var dist:Number = Agent.distance1(dx,dy);
 			a.velocity.x = (dx/dist)*a.speed;
 			a.velocity.y = (dy/dist)*a.speed;
-			a.say("Attacking target at "+a.target.x+" "+a.target.y);
+			//a.say("Attacking target at "+a.target.x+" "+a.target.y);
 			a.speed = 0;
 		}
 		

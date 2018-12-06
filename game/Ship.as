@@ -89,13 +89,13 @@ package game {
 			if(!isPlayer)
 			{
 				myAgent.update();
-				trace(this.velx + " av: " + myAgent.velocity.x);
+				//trace(this.velx + " av: " + myAgent.velocity.x);
 				this.velx+=myAgent.velocity.x*0.05;
 				this.vely+=myAgent.velocity.y*0.05;
-				trace(this.velx);
+				//trace(this.velx);
 				myAgent.x=this.x;
 				myAgent.y=this.y;
-				trace(this.velx);
+				//trace(this.velx);
 				//WOW
 				var targetrotation = degrees(myAgent.targetRotation);
 				//var targetrotation:Number = degrees(Math.atan2(vely,velx));
@@ -151,7 +151,7 @@ package game {
 				{					
 					var vx:Number = s.velx - this.velx;
 					var vy:Number = s.vely - this.vely;
-					trace("Collision - Velocity = " + vx + " " + vy);
+					//trace("Collision - Velocity = " + vx + " " + vy);
 					doCollision(this,s,vx,vy);
 				}
 			}
@@ -204,10 +204,10 @@ package game {
 			{
 				railgunTimer+=10;
 				var pew:RailgunRound = new RailgunRound(this);
-				trace("pew");
+				//trace("pew");
 				this.myImage.parent.addChild(pew);
 				pew.rotation = this.myImage.rotation;
-				trace(pew.velx + " " + this.velx + " " + Math.cos(Ship.radians(this.rotation)));
+				//trace(pew.velx + " " + this.velx + " " + Math.cos(Ship.radians(this.rotation)));
 				
 				pew.velx = this.velx + Math.cos(Ship.radians(this.rotation))*20;
 				pew.vely = this.vely + Math.sin(Ship.radians(this.rotation))*20;

@@ -5,6 +5,7 @@ package game {	// just acts as an image
 		public var ship:Ship = new Ship();		
 		public function AlienStation() {
 			ship.isAlienStation=true;
+			ship.isStation=true;
 			ship.myImage = this;
 			ship.size = 110;
 		}

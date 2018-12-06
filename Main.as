@@ -314,7 +314,7 @@
 		
 		public function removeShip(s:Ship)
 		{
-			trace("Test");
+			//trace("Test");
 			//stolen from the web
 			for (var i:int = 0; i < ships.length; i++) 
 			{

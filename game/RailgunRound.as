@@ -55,7 +55,7 @@
 				{					
 					var vx:Number = s.velx - this.velx;
 					var vy:Number = s.vely - this.vely;
-					trace("Railgun hit! - Velocity = " + vx + " " + vy +" Enemy Health: " + s.hull);
+					//trace("Railgun hit! - Velocity = " + vx + " " + vy +" Enemy Health: " + s.hull);
 					var velocityMag:Number = Math.sqrt((vx*vx)+(vy*vy));
 					s.hull-=velocityMag;
 					active=false;
