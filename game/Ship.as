@@ -47,6 +47,9 @@ package game {
 		public var isAlien:Boolean=false;
 		public var isPirate:Boolean=false;
 		
+		public var velDeltaX:Number=0;
+		public var velDeltaY:Number=0;
+		
 		public function Ship()
 		{
 			myAgent = new Agent();
@@ -56,13 +59,16 @@ package game {
 		
 		public function doUpdate()
 		{
+			var lastVelX:Number = this.velx;
+			var lastVelY:Number = this.vely;
 			var sm:Particle = new Particle();
 			this.myImage.parent.addChild(sm);
-			sm.lifetime=10;
-			sm.sizeDelta=-0.01;
-			sm.alphaDelta=-0.01;
-			sm.x=this.x-16;
-			sm.y=this.y-16;
+			sm.lifetime=(velDeltaX+velDeltaY)*20;
+			sm.alpha=(velDeltaX+velDeltaY)*2;
+			sm.sizeDelta=0.01;
+			sm.alphaDelta=0.01;
+			sm.x=this.x-this.myImage.width/2;
+			sm.y=this.y-this.myImage.height/2;
 			
 			
 			if(!isPlayer)
@@ -98,6 +104,9 @@ package game {
 			myImage.y=this.y;
 			myImage.rotation = this.rotation;
 			testForCollisions();
+			velDeltaX = Math.abs(lastVelX-this.velx);
+			velDeltaY = Math.abs(lastVelY-this.vely);
+			
 		}
 		
 		private function testForCollisions()
