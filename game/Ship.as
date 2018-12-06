@@ -47,6 +47,9 @@ package game {
 		public var isAlien:Boolean=false;
 		public var isPirate:Boolean=false;
 		public var isStation:Boolean = false;
+		public var isPirateStation:Boolean = false;
+		public var isAlienStation:Boolean = false;
+		
 		
 		public var velDeltaX:Number=0;
 		public var velDeltaY:Number=0;
@@ -86,12 +89,21 @@ package game {
 			if(!isPlayer)
 			{
 				myAgent.update();
-				
+				trace(this.velx + " av: " + myAgent.velocity.x);
 				this.velx+=myAgent.velocity.x*0.05;
 				this.vely+=myAgent.velocity.y*0.05;
+				trace(this.velx);
 				myAgent.x=this.x;
 				myAgent.y=this.y;
-				this.rotation = degrees(Math.atan2(vely,velx));
+				trace(this.velx);
+				//WOW
+				var targetrotation = degrees(myAgent.targetRotation);
+				//var targetrotation:Number = degrees(Math.atan2(vely,velx));
+				this.rotation+=(180/Math.PI)*Math.atan2((Math.cos(this.rotation*Math.PI/180)*Math.sin(targetrotation*Math.PI/180)-Math.sin(this.rotation*Math.PI/180)*Math.cos(targetrotation*Math.PI/180)),(Math.sin(this.rotation*Math.PI/180)*Math.sin(targetrotation*Math.PI/180)+Math.cos(this.rotation*Math.PI/180)*Math.cos(targetrotation*Math.PI/180)))/20;
+				
+				
+				
+				//this.rotation = degrees(Math.atan2(vely,velx));
 				/*
 				this.rotation += degrees(Math.atan2(vely,velx)) * 0.5;
 				this.rotation -= this.rotation * 0.1;
@@ -195,6 +207,8 @@ package game {
 				trace("pew");
 				this.myImage.parent.addChild(pew);
 				pew.rotation = this.myImage.rotation;
+				trace(pew.velx + " " + this.velx + " " + Math.cos(Ship.radians(this.rotation)));
+				
 				pew.velx = this.velx + Math.cos(Ship.radians(this.rotation))*20;
 				pew.vely = this.vely + Math.sin(Ship.radians(this.rotation))*20;
 				pew.lifetime=100;
@@ -203,6 +217,17 @@ package game {
 				pew.x=this.x;
 				pew.y=this.y;
 				
+				//not sure where this nan is coming from, but lets stomp it out here.
+				if(isNaN(pew.velx))
+				{
+					pew.lifetime=0;
+					pew.velx=0;
+				}
+				if(isNaN(pew.vely))
+				{
+					pew.lifetime=0;
+					pew.vely=0;
+				}
 			}
 		}
 				

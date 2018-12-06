@@ -24,6 +24,7 @@
 			}
 			
 			var tr:Number = Math.atan2(dy, dx);
+			a.targetRotation=tr;
 			var dif = Math.abs(tr-a.myShip.rotation);
 			if(dif<1)
 				a.fireRailgun = true;
