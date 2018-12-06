@@ -46,6 +46,7 @@ package game {
 		public var isPolice:Boolean=false;
 		public var isAlien:Boolean=false;
 		public var isPirate:Boolean=false;
+		public var isStation:Boolean = false;
 		
 		public var velDeltaX:Number=0;
 		public var velDeltaY:Number=0;
@@ -125,10 +126,27 @@ package game {
 		
 		private function doCollision(s1:Ship, s2:Ship, vx:Number, vy:Number)
 		{
-			s1.velx+=vx;
-			s1.vely+=vy;
-			s2.velx-=vx;
-			s2.vely-=vy;
+			if(s1.isStation)
+			{
+				s2.velx-=vx*2;
+				s2.vely-=vy*2;
+				s2.x-=vx;
+				s2.y-=vy;
+			}
+			else if(s2.isStation)
+			{
+				s1.velx+=vx*2;
+				s1.vely+=vy*2;
+				s1.x+=vx;
+				s1.y+=vy;
+			}
+			else
+			{
+				s1.velx+=vx;
+				s1.vely+=vy;
+				s2.velx-=vx;
+				s2.vely-=vy;
+			}
 		}
 		
 		public static function distance(x1:Number,y1:Number,x2:Number,y2:Number):Number

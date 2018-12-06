@@ -10,6 +10,7 @@
 	import agent.states.GrabShipState;
 	import agent.states.AttackState;
 	import agent.states.SalvageState;
+	import agent.states.StationState;
 	import flash.display.Graphics;
 	import flash.display.Shape;
 	import flash.display.Sprite;
@@ -31,6 +32,7 @@
 		public static const ATTACK:IAgentState = new AttackState();
 		public static const GRABSHIP:IAgentState = new GrabShipState();
 		public static const SALVAGE:IAgentState = new SalvageState();
+		public static const STATION:IAgentState = new StationState();
 		
 		private const RAD_DEG:Number = 180 / Math.PI;
 		
