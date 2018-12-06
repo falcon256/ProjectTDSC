@@ -14,7 +14,7 @@
 			a.velocity.x = (dx/dist)*a.speed;
 			a.velocity.y = (dy/dist)*a.speed;
 			a.say("Attacking...");
-			a.speed = -1;
+			a.speed = 1;
 			
 			if(a.target.hull <=0)
 			{

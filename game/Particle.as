@@ -4,13 +4,13 @@
 
 	public class Particle extends MovieClip{
 
-		public velx:Number=0;
-		public vely:Number=0;
-		public velRot:Number=0;
-		public lifetime:Number=1;
-		public size:Number=1;
-		public sizeDelta:Number=0;
-		public alphaDelta:Number=0;
+		public var velx:Number=0;
+		public var vely:Number=0;
+		public var velRot:Number=0;
+		public var lifetime:Number=1;
+		public var size:Number=1;
+		public var sizeDelta:Number=0;
+		public var alphaDelta:Number=0;
 		
 		public function Particle() {
 			addEventListener(Event.ENTER_FRAME, update);
@@ -31,6 +31,9 @@
 				alpha=0;
 			this.scaleX=size;
 			this.scaleY=size;
+			
+			if(lifetime<0&&this.parent!=null)
+				this.parent.removeChild(this);
 		}
 	}
 	

@@ -56,6 +56,15 @@ package game {
 		
 		public function doUpdate()
 		{
+			var sm:Particle = new Particle();
+			this.myImage.parent.addChild(sm);
+			sm.lifetime=10;
+			sm.sizeDelta=-0.01;
+			sm.alphaDelta=-0.01;
+			sm.x=this.x-16;
+			sm.y=this.y-16;
+			
+			
 			if(!isPlayer)
 			{
 				myAgent.update();
