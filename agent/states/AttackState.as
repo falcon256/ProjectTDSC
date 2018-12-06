@@ -23,6 +23,13 @@
 				trace("Killed!");
 			}
 			
+			var tr:Number = Math.atan2(dy, dx);
+			var dif = Math.abs(tr-a.myShip.rotation);
+			if(dif<1)
+				a.fireRailgun = true;
+			else
+				a.fireRailgun = false;
+			
 			//debug output
 			//trace("Attacking, distance is: "+Agent.distance1(dx,dy));
 		}

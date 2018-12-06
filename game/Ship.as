@@ -58,6 +58,7 @@ package game {
 		public function Ship()
 		{
 			myAgent = new Agent();
+			myAgent.myShip = this;
 			this.x=0;
 			this.y=0;
 		}
@@ -98,6 +99,10 @@ package game {
 					this.rotation-=360;
 				if(this.rotation<0)
 					this.rotation+=360;*/
+				
+				if(myAgent.fireRailgun)
+					this.fireRailgun();
+				
 			}
 			
 			//this.velx+= -this.x*0.001;

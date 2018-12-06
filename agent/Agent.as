@@ -45,10 +45,13 @@
 		public var fleeRadius:Number = 50; //If the mouse is "seen" within this radius, we want to flee
 		public var chaseRadius:Number = 150; //If the mouse is "seen" within this radius, we want to chase
 		public var numCycles:int = 0; //Number of updates that have executed for the current state. Timing utility.
-		
+		public var fireRailgun:Boolean = false;
+		public var fireLaser:Boolean = false;
+		public var fireMissile:Boolean = false;
 		public var targetX:Number=0;
 		public var targetY:Number=0;
 		public var target:Ship = null;
+		public var myShip:Ship = null;
 		public function Agent() 
 		{
 			//Boring stuff here
