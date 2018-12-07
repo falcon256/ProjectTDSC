@@ -22,6 +22,7 @@
 	[SWF(backgroundColor="0x000000")]
 	public class Main extends Sprite 
 	{
+		
 		private var agents:Vector.<Agent>;
 		private var ships:Vector.<Ship>;
 		
@@ -40,6 +41,7 @@
 		
 		public function Main():void 
 		{
+			
 			if(mainSingleton==null)
 				mainSingleton = this;
 			else
@@ -48,7 +50,7 @@
 			else addEventListener(Event.ADDED_TO_STAGE, init);
 			sGameMap = gameMap;
 			targetingCursor = targetingReticle;
-			stage.scaleMode = StageScaleMode.NO_SCALE;
+			//stage.scaleMode = StageScaleMode.NO_SCALE;
 			Mouse.show();
 			createStartMenu();
 		}
@@ -80,7 +82,7 @@
 		{
 			sGameMap = gameMap;
 			removeEventListener(Event.ADDED_TO_STAGE, init);
-			stage.scaleMode = StageScaleMode.NO_SCALE;
+			stage.scaleMode = StageScaleMode.EXACT_FIT;
 			stage.align = StageAlign.TOP_LEFT;
 			agents = new Vector.<Agent>();
 			ships = new Vector.<Ship>();
@@ -279,8 +281,10 @@
 			
 			moveCamera();
 			movingBackground.update(gameMap.x,gameMap.y);
+			trace("Gamemap children: "+gameMap.numChildren+" ships: "+ships.length);
+			
+			
 		}
-		
 		private function moveCamera()
 		{
 			if(agents.length>0)

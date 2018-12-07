@@ -34,6 +34,7 @@
 			
 			if(lifetime<0&&this.parent!=null)
 				this.parent.removeChild(this);
+			
 		}
 	}
 	

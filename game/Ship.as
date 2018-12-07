@@ -70,14 +70,15 @@ package game {
 		{
 			var lastVelX:Number = this.velx;
 			var lastVelY:Number = this.vely;
+			/*
 			var sm:Particle = new Particle();
 			this.myImage.parent.addChild(sm);
-			sm.lifetime=(velDeltaX+velDeltaY)*20;
-			sm.alpha=(velDeltaX+velDeltaY)*2;
+			sm.lifetime=(velDeltaX+velDeltaY)*10;
+			sm.alpha=(velDeltaX+velDeltaY)*50;
 			sm.sizeDelta=0.01;
 			sm.alphaDelta=0.01;
 			sm.x=this.x-this.myImage.width/2;
-			sm.y=this.y-this.myImage.height/2;
+			sm.y=this.y-this.myImage.height/2;*/
 			
 			if(railgunTimer>0)
 				railgunTimer--;
