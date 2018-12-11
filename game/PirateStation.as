@@ -7,7 +7,7 @@ package game {	// just acts as an image
 			ship.isPirateStation=true;
 			ship.isStation=true;
 			ship.myImage = this;
-			ship.size = 110;
+			ship.size = 140;
 		}
 	}
 }
