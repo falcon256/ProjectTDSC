@@ -6,6 +6,7 @@ package game {	// just acts as an image
 		public function Station() {
 			ship.isStation=true;
 			ship.myImage = this;
+			ship.hull = 1000;
 			ship.size = 110;
 		}
 	}

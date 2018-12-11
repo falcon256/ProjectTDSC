@@ -18,6 +18,7 @@
 	import game.AlienStation;
 	import flash.system.fscommand;
 	import flash.ui.Mouse;
+	import game.TradeShip;
 	
 	[SWF(backgroundColor="0x000000")]
 	public class Main extends Sprite 
@@ -93,25 +94,28 @@
 			var pirateS:PirateShip = new PirateShip();
 			var policeS:PoliceShip = new PoliceShip();
 			var alienS:AlienShip = new AlienShip();
-			
+			var tradeS:TradeShip = new TradeShip();
 		
 			
 			gameMap.addChild(playerS);
 			gameMap.addChild(pirateS);
 			gameMap.addChild(policeS);
 			gameMap.addChild(alienS);
+			gameMap.addChild(tradeS);
 			
 			
 			ships.push(playerS.ship);
 			ships.push(pirateS.ship);	
 			ships.push(policeS.ship);
 			ships.push(alienS.ship);
+			ships.push(tradeS.ship);
 			
 			
 			gameMap.addChild(playerS.ship.myAgent);
 			gameMap.addChild(pirateS.ship.myAgent);
 			gameMap.addChild(policeS.ship.myAgent);
 			gameMap.addChild(alienS.ship.myAgent);
+			gameMap.addChild(tradeS.ship.myAgent);
 			
 			addChild(hud);
 			hud.y = 300;
@@ -192,9 +196,11 @@
 					astationS.ship.myAgent.setState(Agent.STATION);
 				}
 			}
+
 			agents.push(pirateS.ship.myAgent);
 			agents.push(policeS.ship.myAgent);
 			agents.push(alienS.ship.myAgent);
+			agents.push(tradeS.ship.myAgent);
 			
 			
 			pirateS.ship.myAgent.targetX=500;
@@ -216,6 +222,12 @@
 			alienS.ship.myAgent.y=500;
 			alienS.ship.x=50;
 			alienS.ship.y=500;
+			
+			tradeS.ship.myAgent.targetX = 150;
+			tradeS.ship.myAgent.targetY = 150;
+			tradeS.ship.myAgent.target = stationS.ship;
+			tradeS.ship.myAgent.setState(Agent.MOVETO);
+			tradeS.ship.x = 200;
 			
 			
 			
@@ -363,6 +375,11 @@
 				 if (s == ships[i])
 					  ships.splice(i,1);
 			}
+			
+			var debris:Debris = new Debris();
+			gameMap.addChild(debris);
+			debris.x = s.x;
+			debris.y = s.y;
 			
 			s.myImage.parent.removeChild(s.myImage);
 		}
