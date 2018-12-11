@@ -116,7 +116,7 @@
 			addChild(hud);
 			hud.y = 300;
 			playerS.ship.x=100;
-			pirateS.ship.x=-100;
+			pirateS.ship.x=-1000;
 			var posx:Number = Math.random() * 10000;
 			var posy:Number = Math.random() * 10000;
 			var good:Boolean = true;
@@ -363,6 +363,7 @@
 				 if (s == ships[i])
 					  ships.splice(i,1);
 			}
+			
 			s.myImage.parent.removeChild(s.myImage);
 		}
 		public static function distance(x1:Number,y1:Number,x2:Number,y2:Number):Number
