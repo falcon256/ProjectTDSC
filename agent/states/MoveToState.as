@@ -26,7 +26,7 @@
 			
 			a.targetRotation=tr;
 			//debug output
-			trace("Moving, distance is: "+Agent.distance1(dx,dy));
+			//trace("Moving, distance is: "+Agent.distance1(dx,dy));
 		}
 		
 		public function enter(a:Agent):void

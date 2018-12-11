@@ -19,6 +19,8 @@
 	import flash.system.fscommand;
 	import flash.ui.Mouse;
 	import game.TradeShip;
+	import flash.text.TextField;
+	import flash.text.TextFormat;
 	
 	[SWF(backgroundColor="0x000000")]
 	public class Main extends Sprite 
@@ -37,6 +39,8 @@
 		private var DScreen:Directions = new Directions();	
 		private var isStarted:Boolean = false;
 		public var hud:GameHud = new GameHud();
+		public var gameScore:TextField;//game score field
+		public var score:Number = 0;//score variable to store your points
 		
 		//Reid and Ross additions
 		
@@ -229,8 +233,20 @@
 			tradeS.ship.myAgent.setState(Agent.MOVETO);
 			tradeS.ship.x = 200;
 			
+			var tf:TextFormat = new TextFormat();
+			tf.size = 14;
+			tf.bold = true;
+			tf.font = "Arial";
+			tf.color = 0xFF0000;
 			
-			
+			gameScore = new TextField;//game score
+			gameScore.defaultTextFormat = tf;
+			gameScore.width = 200;
+			gameScore.y = 680;
+			gameScore.x = 1100;
+		
+			gameScore.text = "Salvage: 0";
+			addChild(gameScore);
 			
 			addEventListener(Event.ENTER_FRAME, gameloop);
 			/*for (var i:int = 0; i < 1; i++) 
@@ -293,7 +309,7 @@
 			
 			moveCamera();
 			movingBackground.update(gameMap.x,gameMap.y);
-			trace("Gamemap children: "+gameMap.numChildren+" ships: "+ships.length);
+			//trace("Gamemap children: "+gameMap.numChildren+" ships: "+ships.length);
 			
 			
 		}
@@ -380,7 +396,9 @@
 			gameMap.addChild(debris);
 			debris.x = s.x;
 			debris.y = s.y;
-			
+			score += 10;
+			gameScore.text = "Salvage: " + score;
+				
 			s.myImage.parent.removeChild(s.myImage);
 		}
 		public static function distance(x1:Number,y1:Number,x2:Number,y2:Number):Number
