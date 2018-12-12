@@ -97,6 +97,7 @@ package game {
 				myAgent.x=this.x;
 				myAgent.y=this.y;
 				//trace(this.velx);
+				
 				//WOW
 				var targetrotation = degrees(myAgent.targetRotation);
 				//var targetrotation:Number = degrees(Math.atan2(vely,velx));
@@ -204,7 +205,7 @@ package game {
 			if(railgunTimer<=0)
 			{
 				railgunTimer+=10;
-				var pew:RailgunRound = new RailgunRound(this);
+				var pew:Missile = new Missile(this);
 				//trace("pew");
 				this.myImage.parent.addChild(pew);
 				pew.rotation = this.myImage.rotation;
