@@ -19,7 +19,8 @@
 			a.velocity.x*=0.5;
 			a.velocity.y*=0.5;
 			a.speed = 0;
-			
+			var x1:Number = a.myShip.x;
+			var y1:Number = a.myShip.y;
 			
 			if (count <= limit)
 				{
@@ -42,14 +43,13 @@
 						pirateS.ship.myAgent.target=Main.getSingleton().playerS.ship;
 						pirateS.ship.myAgent.setState(Agent.ATTACK);
 						
-						var x1:Number = a.myShip.x;
-						var y1:Number = a.myShip.y;
-						for each (var s in Main.getSingleton().getShipsList())
+						
+						for each (var s1 in Main.getSingleton().getShipsList())
 						{
-							if(s.isPirateStation&&Math.random()>0.95)
+							if(s1.isPirateStation&&Math.random()>0.95)
 							{
-								x1 = s.x;
-								y1 = s.y;
+								x1 = s1.x;
+								y1 = s1.y;
 						}
 					}
 					
@@ -72,14 +72,12 @@
 						policeS.ship.myAgent.target=Main.getSingleton().playerS.ship;
 						policeS.ship.myAgent.setState(Agent.ATTACK);
 						
-						var x1:Number = a.myShip.x;
-						var y1:Number = a.myShip.y;
-						for each (var s in Main.getSingleton().getShipsList())
+						for each (var s2 in Main.getSingleton().getShipsList())
 						{
-							if(s.isStation&&Math.random()>0.95)
+							if(s2.isStation&&Math.random()>0.95)
 							{
-								x1 = s.x;
-								y1 = s.y;
+								x1 = s2.x;
+								y1 = s2.y;
 						}
 					}
 					
@@ -102,14 +100,12 @@
 						alienS.ship.myAgent.target=Main.getSingleton().playerS.ship;
 						alienS.ship.myAgent.setState(Agent.ATTACK);
 						
-						var x1:Number = a.myShip.x;
-						var y1:Number = a.myShip.y;
-						for each (var s in Main.getSingleton().getShipsList())
+						for each (var s3 in Main.getSingleton().getShipsList())
 						{
-							if(s.isStation&&Math.random()>0.95)
+							if(s3.isStation&&Math.random()>0.95)
 							{
-								x1 = s.x;
-								y1 = s.y;
+								x1 = s3.x;
+								y1 = s3.y;
 						}
 					}
 					
