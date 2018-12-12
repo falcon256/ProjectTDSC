@@ -4,6 +4,7 @@
 	import Main;
 	import agent.Agent;
 	import game.PirateShip;
+	
 	public class BuildShipState implements IAgentState
 	{
 			public var count:int = 0;
@@ -37,8 +38,22 @@
 					pirateS.ship.myAgent.targetY=500;
 					pirateS.ship.myAgent.target=Main.getSingleton().playerS.ship;
 					pirateS.ship.myAgent.setState(Agent.ATTACK);
-					pirateS.ship.x = a.myShip.x + (Math.random() - Math.random()) * 100;
-					pirateS.ship.y = a.myShip.y - (Math.random() - Math.random()) * 100;
+					
+					var x1:Number = a.myShip.x;
+					var y1:Number = a.myShip.y;
+					for each (var s in Main.getSingleton().getShipsList())
+					{
+						if(s.isPirateStation&&Math.random()>0.95)
+						{
+							x1 = s.x;
+							y1 = s.y;
+						}
+					}
+					
+					
+					
+					pirateS.ship.x = x1 + (Math.random() - Math.random()) * 100;
+					pirateS.ship.y = y1 + (Math.random() - Math.random()) * 100;
 				}	
 			
 		}

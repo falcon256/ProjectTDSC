@@ -28,8 +28,8 @@
 	public class Main extends Sprite 
 	{
 		
-		private var agents:Vector.<Agent>;
-		private var ships:Vector.<Ship>;
+		public var agents:Vector.<Agent>;
+		public var ships:Vector.<Ship>;
 		
 		public static var sGameMap:MovieClip = null;
 		public static var targetingCursor:TargetingReticle = null;
@@ -162,7 +162,7 @@
 				good = true;
 				for (n = 0; n < ships.length; n++) 
 				{
-					if(distance(posx,posy,ships[n].x,ships[n].y)<500)
+					if(distance(posx,posy,ships[n].x,ships[n].y)<200)
 						good=false;
 				}
 				if(good)
