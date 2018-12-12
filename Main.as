@@ -155,7 +155,7 @@
 					stationS.ship.y= posy;
 					stationS.ship.myAgent.targetX = 300;
 					stationS.ship.myAgent.targetY = 300;
-					stationS.ship.myAgent.setState(Agent.STATION);
+					stationS.ship.myAgent.setState(Agent.BUILD);
 				}
 			}
 			for (i = 0; i < 20; i++){
@@ -202,7 +202,7 @@
 					astationS.ship.y= posy;
 					astationS.ship.myAgent.targetX = 300;
 					astationS.ship.myAgent.targetY = 300;
-					astationS.ship.myAgent.setState(Agent.STATION);
+					astationS.ship.myAgent.setState(Agent.BUILD);
 				}
 			}
 
