@@ -1,5 +1,6 @@
 ﻿package agent 
 {
+	import agent.states.BuildShipState;
 	import agent.states.ChaseState;
 	import agent.states.ConfusionState;
 	import agent.states.FleeState;
@@ -33,6 +34,7 @@
 		public static const GRABSHIP:IAgentState = new GrabShipState();
 		public static const SALVAGE:IAgentState = new SalvageState();
 		public static const STATION:IAgentState = new StationState();
+		public static const BUILD:IAgentState = new BuildShipState();
 		
 		private const RAD_DEG:Number = 180 / Math.PI;
 		

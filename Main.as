@@ -157,8 +157,8 @@
 				}
 			}
 			for (i = 0; i < 20; i++){
-				posx = Math.random() * 10000;
-				posy = Math.random() * 10000;
+				posx = Math.random() * 1000;
+				posy = Math.random() * 1000;
 				good = true;
 				for (n = 0; n < ships.length; n++) 
 				{
@@ -176,7 +176,8 @@
 					pstationS.ship.y= posy;
 					pstationS.ship.myAgent.targetX = 300;
 					pstationS.ship.myAgent.targetY = 300;
-					pstationS.ship.myAgent.setState(Agent.STATION);
+					pstationS.ship.myAgent.setState(Agent.BUILD);
+					trace(pstationS.ship.myAgent.x);
 				}
 			}
 			for (i = 0; i < 20; i++){
