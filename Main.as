@@ -396,8 +396,9 @@
 			
 			var debris:Debris = new Debris();
 			gameMap.addChild(debris);
-			debris.salv.x = s.x;
-			debris.salv.y = s.y;
+			debris.x = s.x;
+			debris.y = s.y;
+			
 			score += 10;
 			gameScore.text = "Salvage: " + score;
 				
