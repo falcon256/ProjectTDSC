@@ -8,7 +8,7 @@
 	public class BuildShipState implements IAgentState
 	{
 			public var count:int = 0;
-			public var limit:int = 100;
+			public var limit:int = 1440;
 			public var increase:int = 1;
 		
 	public function update(a:Agent):void
