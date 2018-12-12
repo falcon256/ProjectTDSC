@@ -211,8 +211,8 @@ package game {
 				pew.rotation = this.myImage.rotation;
 				//trace(pew.velx + " " + this.velx + " " + Math.cos(Ship.radians(this.rotation)));
 				
-				pew.velx = this.velx + Math.cos(Ship.radians(this.rotation))*20;
-				pew.vely = this.vely + Math.sin(Ship.radians(this.rotation))*20;
+				pew.velx = this.velx + Math.cos(Ship.radians(this.rotation));
+				pew.vely = this.vely + Math.sin(Ship.radians(this.rotation));
 				pew.lifetime=100;
 				pew.sizeDelta=0.01;
 				pew.alphaDelta=0.01;

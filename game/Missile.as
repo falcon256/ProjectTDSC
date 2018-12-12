@@ -14,17 +14,19 @@
 		public var alphaDelta:Number=0;
 		public var parentShip:Ship = null;
 		public var active:Boolean = true;
-		
+		public var fuel:Number = 1000;
 		public var targetX:Number;
 		public var targetY:Number;
 		
 		public var targetShip:Ship;
 		
-		
+		public var pid:PID;
 		
 		public function Missile(s:Ship) {
 			parentShip=s;
 			addEventListener(Event.ENTER_FRAME, update);
+			pid = new PID(0.02,0.0001,0.0001);
+			
 		}
 
 		
@@ -35,6 +37,7 @@
 				this.x+=velx;
 				this.y+=vely;
 				this.rotation+=velRot;
+				velRot*=0.99;
 				
 				if(targetShip!=null&&targetShip.myImage.parent!=null)
 				{
@@ -48,19 +51,50 @@
 				}				
 				
 				//guidance code
-				var dx:Number = targetX - x;
-				var dy:Number = targetY - y;
-				var targetrotation:Number = Math.atan2(dy, dx);
-				var TargRot: Number =(180/Math.PI)*Math.atan2((Math.cos(this.rotation*Math.PI/180)*Math.sin(targetrotation*Math.PI/180)-Math.sin(this.rotation*Math.PI/180)*Math.cos(targetrotation*Math.PI/180)),(Math.sin(this.rotation*Math.PI/180)*Math.sin(targetrotation*Math.PI/180)+Math.cos(this.rotation*Math.PI/180)*Math.cos(targetrotation*Math.PI/180)));
+				if(!isNaN(targetX)&&!isNaN(targetY)&&fuel>0)
+				{
+					var dx:Number = targetX - x;
+					var dy:Number = targetY - y;
+					var targetrotation:Number = Ship.degrees(Math.atan2(dy, dx));
+					var TargRot: Number =(180/Math.PI)*Math.atan2((Math.cos(this.rotation*Math.PI/180)*Math.sin(targetrotation*Math.PI/180)-Math.sin(this.rotation*Math.PI/180)*Math.cos(targetrotation*Math.PI/180)),(Math.sin(this.rotation*Math.PI/180)*Math.sin(targetrotation*Math.PI/180)+Math.cos(this.rotation*Math.PI/180)*Math.cos(targetrotation*Math.PI/180)));
+					var rot:Number = pid.tick(TargRot);
+					//var rot = TargRot;
+					
+					//trace(rot);
+					velRot+=rot*0.5;
+					
+					
+					
+					velx += Math.cos(Ship.radians(this.rotation))*0.1;
+					vely += Math.sin(Ship.radians(this.rotation))*0.1;
+					fuel--;
+					
+					
+				}
+				
+				if(fuel<0)
+				{
+					lifetime-=1;
+				}
+					//detection code
+					if(targetShip==null)
+					{
+						for each (var s in Main.getSingleton().getShipsList())
+						{
+							if(s!=this.parentShip&&distance(s.x,s.y,this.x,this.y)<500)
+							{					
+								targetShip=s;
+								targetX = s.x;
+								targetY = s.y;
+								trace("New missile target detected");
+								
+							}
+						}
+					}
 				
 				
-				
-				
-				
-				
-				lifetime-=1;
-				size-=sizeDelta;
-				alpha-=alphaDelta;
+				//size-=sizeDelta;
+				//alpha-=alphaDelta;
 				if(size<0)
 					size=0;
 				if(alpha<0)
