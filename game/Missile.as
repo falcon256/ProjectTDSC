@@ -25,7 +25,7 @@
 		public function Missile(s:Ship) {
 			parentShip=s;
 			addEventListener(Event.ENTER_FRAME, update);
-			pid = new PID(0.02,0.0001,0.0001);
+			pid = new PID(0.03,0.0001,0.0001);
 			
 		}
 
@@ -37,7 +37,7 @@
 				this.x+=velx;
 				this.y+=vely;
 				this.rotation+=velRot;
-				velRot*=0.99;
+				velRot*=0.9;
 				
 				if(targetShip!=null&&targetShip.myImage.parent!=null)
 				{
@@ -61,12 +61,12 @@
 					//var rot = TargRot;
 					
 					//trace(rot);
-					velRot+=rot*0.5;
+					velRot+=rot*0.9;
 					
 					
 					
-					velx += Math.cos(Ship.radians(this.rotation))*0.1;
-					vely += Math.sin(Ship.radians(this.rotation))*0.1;
+					velx += Math.cos(Ship.radians(this.rotation))*0.5;
+					vely += Math.sin(Ship.radians(this.rotation))*0.5;
 					fuel--;
 					
 					
