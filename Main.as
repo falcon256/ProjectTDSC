@@ -14,6 +14,7 @@
 	import game.AlienShip;
 	import game.Ship;
 	import game.Station;
+	import game.Salvage;
 	import game.PirateStation;
 	import game.AlienStation;
 	import flash.system.fscommand;
@@ -394,8 +395,8 @@
 			
 			var debris:Debris = new Debris();
 			gameMap.addChild(debris);
-			debris.x = s.x;
-			debris.y = s.y;
+			salvage.debris.x = s.x;
+			salvage.debris.y = s.y;
 			score += 10;
 			gameScore.text = "Salvage: " + score;
 				
