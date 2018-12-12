@@ -22,6 +22,7 @@
 	import flash.ui.Mouse;
 	import game.TradeShip;
 	import flash.text.TextField;
+	import EndScreen;
 	import flash.text.TextFormat;
 	
 	[SWF(backgroundColor="0x000000")]
@@ -41,6 +42,7 @@
 		private var DScreen:Directions = new Directions();	
 		private var isStarted:Boolean = false;
 		public var hud:GameHud = new GameHud();
+		public var end:EndScreen = new EndScreen();
 		public var gameScore:TextField;//game score field
 		public var score:Number = 0;//score variable to store your points
 		
@@ -312,6 +314,10 @@
 			
 			moveCamera();
 			movingBackground.update(gameMap.x,gameMap.y);
+			/*if(playerS.ship.hull <= 0)
+			{
+				end();
+			}*/
 			//trace("Gamemap children: "+gameMap.numChildren+" ships: "+ships.length);
 			
 			

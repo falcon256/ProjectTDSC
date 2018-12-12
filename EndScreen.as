@@ -11,7 +11,9 @@
 			Death.BackToMenuBtn.addEventListener(MouseEvent.CLICK, exit);
 		}
 		public function retry(evt:MouseEvent){
+			/*var game:Main = new Main();
 			
+			game();*/
 		}
 		public function exit(evt:MouseEvent){
 			
