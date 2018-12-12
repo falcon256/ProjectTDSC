@@ -17,12 +17,13 @@
 	import game.Salvage;
 	import game.Debris;
 	import game.PirateStation;
+	import game.Debris;
+	import game.DebrisObject;
 	import game.AlienStation;
 	import flash.system.fscommand;
 	import flash.ui.Mouse;
 	import game.TradeShip;
 	import flash.text.TextField;
-	import EndScreen;
 	import flash.text.TextFormat;
 	
 	[SWF(backgroundColor="0x000000")]
@@ -31,6 +32,7 @@
 		
 		public var agents:Vector.<Agent>;
 		public var ships:Vector.<Ship>;
+		public var debrises:Vector.<DebrisObject>;
 		
 		public static var sGameMap:MovieClip = null;
 		public static var targetingCursor:TargetingReticle = null;
@@ -42,7 +44,6 @@
 		private var DScreen:Directions = new Directions();	
 		private var isStarted:Boolean = false;
 		public var hud:GameHud = new GameHud();
-		public var end:EndScreen = new EndScreen();
 		public var gameScore:TextField;//game score field
 		public var score:Number = 0;//score variable to store your points
 		
@@ -95,6 +96,7 @@
 			stage.align = StageAlign.TOP_LEFT;
 			agents = new Vector.<Agent>();
 			ships = new Vector.<Ship>();
+			debrises = new Vector.<DebrisObject>();
 			// entry point
 			//graphics.beginFill(0xeeeeee);
 			//graphics.drawRect(0, 0, stage.stageWidth, stage.stageHeight);
@@ -155,7 +157,7 @@
 					stationS.ship.y= posy;
 					stationS.ship.myAgent.targetX = 300;
 					stationS.ship.myAgent.targetY = 300;
-					stationS.ship.myAgent.setState(Agent.BUILD);
+					stationS.ship.myAgent.setState(Agent.STATION);
 				}
 			}
 			for (i = 0; i < 20; i++){
@@ -202,7 +204,7 @@
 					astationS.ship.y= posy;
 					astationS.ship.myAgent.targetX = 300;
 					astationS.ship.myAgent.targetY = 300;
-					astationS.ship.myAgent.setState(Agent.BUILD);
+					astationS.ship.myAgent.setState(Agent.STATION);
 				}
 			}
 
@@ -314,10 +316,6 @@
 			
 			moveCamera();
 			movingBackground.update(gameMap.x,gameMap.y);
-			/*if(playerS.ship.hull <= 0)
-			{
-				end();
-			}*/
 			//trace("Gamemap children: "+gameMap.numChildren+" ships: "+ships.length);
 			
 			
@@ -365,6 +363,12 @@
 		{
 			return ships;
 		}
+		
+		public function getDebrisList():Vector.<DebrisObject>
+		{
+			return debrises;
+		}		
+		
 		private function directionsScreen(evt:MouseEvent):void
 		{
 			removeChild(SScreen);
@@ -401,8 +405,12 @@
 					  ships.splice(i,1);
 			}
 			
-			var debris:Debris = new Debris();
-			gameMap.addChild(debris);
+			var debris:DebrisObject = new DebrisObject();
+			trace(debris);
+			debrises.push(debris);
+			gameMap.addChild(debris.debrisClip);
+			debris.debrisClip.x = s.x;
+			debris.debrisClip.y = s.y;
 			debris.x = s.x;
 			debris.y = s.y;
 			
