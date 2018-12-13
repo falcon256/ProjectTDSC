@@ -25,7 +25,7 @@
 			if (count <= limit)
 				{
 					count += increase;
-					trace(count);
+					//trace(count);
 				}
 				else
 				{

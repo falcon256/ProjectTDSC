@@ -395,10 +395,18 @@
 			trace("hi");
 		}
 		
+		public function removeDebris(s:DebrisObject)
+		{		
+			for (var i:int = 0; i < debrises.length; i++) 
+			{
+				 if (s == debrises[i])
+					  debrises.splice(i,1);
+			}
+		}
+		
 		public function removeShip(s:Ship)
 		{
-			//trace("Test");
-			//stolen from the web
+			
 			for (var i:int = 0; i < ships.length; i++) 
 			{
 				 if (s == ships[i])
