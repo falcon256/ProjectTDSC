@@ -49,6 +49,7 @@ package game {
 		public var isStation:Boolean = false;
 		public var isPirateStation:Boolean = false;
 		public var isAlienStation:Boolean = false;
+		public var isCivilianStation:Boolean = false;
 		
 		
 		public var velDeltaX:Number=0;

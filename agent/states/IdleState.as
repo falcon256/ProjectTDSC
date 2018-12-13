@@ -14,15 +14,32 @@
 				var dist:Number = Main.distance(a.myShip.x, a.myShip.y, pew.x, pew.y);
 				
 				if (a.myShip.isPirate&&dist<1000) {
-					if(!pew.isPirate)
+					if(!pew.isPirate && !pew.isPirateStation)
 					{
 						a.target = pew;
 						a.setState(Agent.ATTACK);
 					}
 				}
+				
+				if (a.myShip.isAlien&&dist<1000) {
+					if(!pew.isAlien && !pew.isAlienStation)
+					{
+						a.target = pew;
+						a.setState(Agent.ATTACK);
+					}
+				}
+				
+				if (a.myShip.isPolice&&dist<1000) {
+					if(!pew.isPolice && !pew.isTrader && !pew.isCivilianStation)
+					{
+						a.target = pew;
+						a.setState(Agent.ATTACK);
+					}
+				}
+				
 			}
 			
-			if(a.myShip.isTrader)
+			if(a.myShip.isTrader && dist < 1000)
 			{
 				//var ships:Vector.<Ship> = Main.getSingleton().getShipsList();
 				//var options:Vector.<Ship> = new Vector.<Ship>();
