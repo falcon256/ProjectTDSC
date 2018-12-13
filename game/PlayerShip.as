@@ -85,6 +85,8 @@
 								Main.getSingleton().removeDebris(d);
 								collecting=false;
 								colN=0;
+								Main.getSingleton().Cash++;
+								Main.getSingleton().gameScore.text = "Reputation: "+Main.getSingleton().Reputation+" Cash: "+Main.getSingleton().Cash;
 							//}
 						}
 						
