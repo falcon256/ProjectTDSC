@@ -11,7 +11,7 @@
 	public class BuildShipState implements IAgentState
 	{
 			public var count:int = 0;
-			public var limit:int = 1440;
+			public var limit:int = 200;
 			public var increase:int = 1;
 			
 	public function update(a:Agent):void
@@ -88,6 +88,7 @@
 					}
 					
 					if(a.myShip.isAlienStation) {
+						
 						var alienS:AlienShip = new AlienShip();
 						Main.getSingleton().gameMap.addChild(alienS);
 						
@@ -102,7 +103,7 @@
 						
 						for each (var s3 in Main.getSingleton().getShipsList())
 						{
-							if(s3.isStation&&Math.random()>0.95)
+							if(s3.isAlienStation&&Math.random()>0.95)
 							{
 								x1 = s3.x;
 								y1 = s3.y;

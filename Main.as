@@ -103,36 +103,28 @@
 			//graphics.beginFill(0xeeeeee);
 			//graphics.drawRect(0, 0, stage.stageWidth, stage.stageHeight);
 			
-			var pirateS:PirateShip = new PirateShip();
-			var policeS:PoliceShip = new PoliceShip();
-			var alienS:AlienShip = new AlienShip();
+		
 			var tradeS:TradeShip = new TradeShip();
 		
 			
 			gameMap.addChild(playerS);
-			gameMap.addChild(pirateS);
-			gameMap.addChild(policeS);
-			gameMap.addChild(alienS);
+		
 			gameMap.addChild(tradeS);
 			
 			
 			ships.push(playerS.ship);
-			ships.push(pirateS.ship);	
-			ships.push(policeS.ship);
-			ships.push(alienS.ship);
+			
 			ships.push(tradeS.ship);
 			
 			
 			gameMap.addChild(playerS.ship.myAgent);
-			gameMap.addChild(pirateS.ship.myAgent);
-			gameMap.addChild(policeS.ship.myAgent);
-			gameMap.addChild(alienS.ship.myAgent);
+		
 			gameMap.addChild(tradeS.ship.myAgent);
 			
 			addChild(hud);
 			hud.y = 300;
 			playerS.ship.x=100;
-			pirateS.ship.x=-1000;
+			
 			var posx:Number = Math.random() * 10000;
 			var posy:Number = Math.random() * 10000;
 			var good:Boolean = true;
@@ -163,12 +155,12 @@
 				}
 			}
 			for (i = 0; i < 20; i++){
-				posx = Math.random() * 1000;
-				posy = Math.random() * 1000;
+				posx = Math.random() * 10000;
+				posy = Math.random() * 10000;
 				good = true;
 				for (n = 0; n < ships.length; n++) 
 				{
-					if(distance(posx,posy,ships[n].x,ships[n].y)<200)
+					if(distance(posx,posy,ships[n].x,ships[n].y)<500)
 						good=false;
 				}
 				if(good)
@@ -210,31 +202,10 @@
 				}
 			}
 
-			agents.push(pirateS.ship.myAgent);
-			agents.push(policeS.ship.myAgent);
-			agents.push(alienS.ship.myAgent);
+		
 			agents.push(tradeS.ship.myAgent);
 			
 			
-			pirateS.ship.myAgent.targetX=500;
-			pirateS.ship.myAgent.targetY=500;
-			pirateS.ship.myAgent.target=playerS.ship;
-			pirateS.ship.myAgent.setState(Agent.ATTACK);
-			
-			policeS.ship.myAgent.targetX=250;
-			policeS.ship.myAgent.targetY=250;
-			policeS.ship.myAgent.target=pirateS.ship;
-			policeS.ship.myAgent.setState(Agent.ATTACK);
-			
-			alienS.ship.myAgent.targetX=150;
-			alienS.ship.myAgent.targetY=150;
-			alienS.ship.myAgent.target=playerS.ship;
-			alienS.ship.myAgent.setState(Agent.ATTACK);
-			
-			alienS.ship.myAgent.x=50;
-			alienS.ship.myAgent.y=500;
-			alienS.ship.x=50;
-			alienS.ship.y=500;
 			
 			tradeS.ship.myAgent.targetX = 150;
 			tradeS.ship.myAgent.targetY = 150;
@@ -252,9 +223,9 @@
 			gameScore.defaultTextFormat = tf;
 			gameScore.width = 200;
 			gameScore.y = 680;
-			gameScore.x = 1100;
+			gameScore.x = 1050;
 		
-			gameScore.text = "Salvage: 0";
+			gameScore.text = "Reputation: 0 Cash: 0" ;
 			addChild(gameScore);
 			
 			addEventListener(Event.ENTER_FRAME, gameloop);
@@ -424,8 +395,7 @@
 			debris.x = s.x;
 			debris.y = s.y;
 			
-			score += 10;
-			gameScore.text = "Salvage: " + score;
+			
 				
 			s.myImage.parent.removeChild(s.myImage);
 		}

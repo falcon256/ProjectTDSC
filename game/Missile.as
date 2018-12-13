@@ -144,7 +144,7 @@
 						
 					}
 					
-					Main.getSingleton().gameScore.text = "Reputation "+Main.getSingleton().Reputation+" Cash "+Main.getSingleton().Cash;
+					Main.getSingleton().gameScore.text = "Reputation: "+Main.getSingleton().Reputation+" Cash: "+Main.getSingleton().Cash;
 				}
 			}
 		}
