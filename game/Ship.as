@@ -81,6 +81,9 @@ package game {
 			sm.x=this.x-this.myImage.width/2;
 			sm.y=this.y-this.myImage.height/2;*/
 			
+			velx-=x*0.0000001;
+			vely-=y*0.0000001;
+			
 			if(railgunTimer>=0)
 				railgunTimer--;
 			if(laserTimer>=0)
