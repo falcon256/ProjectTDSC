@@ -5,6 +5,7 @@
 		public function TradeShip() {
 			ship.isTrader=true;
 			ship.myImage = this;
+			ship.size = 80;
 		}
 	}
 }

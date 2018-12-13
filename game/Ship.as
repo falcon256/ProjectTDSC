@@ -205,14 +205,14 @@ package game {
 			if(railgunTimer<=0)
 			{
 				railgunTimer+=10;
-				var pew:Missile = new Missile(this);
+				var pew:RailgunRound = new RailgunRound(this);
 				//trace("pew");
 				this.myImage.parent.addChild(pew);
 				pew.rotation = this.myImage.rotation;
 				//trace(pew.velx + " " + this.velx + " " + Math.cos(Ship.radians(this.rotation)));
 				
-				pew.velx = this.velx + Math.cos(Ship.radians(this.rotation));
-				pew.vely = this.vely + Math.sin(Ship.radians(this.rotation));
+				pew.velx = this.velx + Math.cos(Ship.radians(this.rotation))*50;
+				pew.vely = this.vely + Math.sin(Ship.radians(this.rotation))*50;
 				pew.lifetime=100;
 				pew.sizeDelta=0.01;
 				pew.alphaDelta=0.01;
