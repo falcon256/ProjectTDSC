@@ -137,7 +137,7 @@
 			
 			if (!_currentState)
 			{
-				trace("Agent has no state");
+				//trace("Agent has no state");
 				return; //If there's no behavior, we do nothing
 			}
 			numCycles++; 
@@ -149,7 +149,7 @@
 			_pointer.rotation = RAD_DEG * Math.atan2(velocity.y, velocity.x);
 		}
 		public function setState(newState:IAgentState):void {
-			trace(_currentState);
+			//trace(_currentState);
 			if (_currentState == newState) return;
 			if (_currentState) {
 				_currentState.exit(this);

@@ -29,7 +29,7 @@
 			velDeltaY = Math.abs(lastVelY-this.vely);
 			if(hull<0)
 			{
-				trace("Hi");
+				//trace("Hi");
 			}
 			
 			

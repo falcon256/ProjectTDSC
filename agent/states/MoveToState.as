@@ -20,7 +20,7 @@
 			{
 				a.setState(Agent.IDLE);
 				a.say("Arrived!");
-				trace("Arrived!");
+				//trace("Arrived!");
 			}
 			var tr:Number = Math.atan2(dy, dx);
 			

@@ -135,7 +135,7 @@
 						if(s.isPirate||s.isAlien)
 						{
 							Main.getSingleton().Reputation++;
-							trace(""+s.isPirate+" "+Main.getSingleton().Reputation);
+							//trace(""+s.isPirate+" "+Main.getSingleton().Reputation);
 						}
 						else
 						{
