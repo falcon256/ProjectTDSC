@@ -25,17 +25,26 @@
 			for each (var pew in Main.getSingleton().getShipsList())
 			{
 				var dist:Number = Main.distance(a.myShip.x, a.myShip.y, pew.x, pew.y);
-				if(dist<1000)
+				if(dist<350)
 				{
 				if (a.myShip.isPirateStation) {
-					if(!pew.isPirate)
+					if(!pew.isPirate&&!pew.isPirateStation)
 					{
-						a.myShip.fireRailgun();
+						a.myShip.fireMissile();
+					}
+				}
+				if (a.myShip.isStation) {
+					if(!pew.isPolice&&!pew.isStation){
+						a.myShip.fireMissile();
+					}
+				}
+				if (a.myShip.isAlienStation) {
+					if(!pew.isAlien&&!pew.isAlienStation){
+						a.myShip.fireMissile();
 					}
 				}
 			}
 			}
-			
 			
 			
 			
