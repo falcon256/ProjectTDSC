@@ -12,7 +12,7 @@
 		public function PlayerShip() {
 			ship.isPlayer=true;
 			ship.myImage = this;
-			ship.hull=1000000;
+			ship.hull=1;
 			addEventListener(Event.ENTER_FRAME, update);
 			
 		}

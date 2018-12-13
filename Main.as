@@ -33,7 +33,7 @@
 		public var agents:Vector.<Agent>;
 		public var ships:Vector.<Ship>;
 		public var debrises:Vector.<DebrisObject>;
-		
+		public var end:Death = new Death();
 		public static var sGameMap:MovieClip = null;
 		public static var targetingCursor:TargetingReticle = null;
 		public var playerS:PlayerShip = new PlayerShip();
@@ -90,8 +90,10 @@
 		
 		}
 		
-		private function init(e:Event = null):void 
+		public function init(e:Event = null):void 
 		{
+			
+			
 			sGameMap = gameMap;
 			removeEventListener(Event.ADDED_TO_STAGE, init);
 			stage.scaleMode = StageScaleMode.EXACT_FIT;
@@ -177,7 +179,7 @@
 					pstationS.ship.myAgent.targetY = 300;
 					pstationS.ship.myAgent.setState(Agent.BUILD);
 					pstationS.ship.isPirateStation=true;
-					trace(pstationS.ship.myAgent.x);
+					//trace(pstationS.ship.myAgent.x);
 				}
 			}
 			for (i = 0; i < 20; i++){
@@ -292,6 +294,14 @@
 			
 			moveCamera();
 			movingBackground.update(gameMap.x,gameMap.y);
+			if(playerS.ship.hull <= 0)
+			{
+				removeEventListener(Event.ENTER_FRAME, gameloop);
+				Mouse.show();
+				addChild(end);
+				end.RetryBtn.addEventListener(MouseEvent.CLICK, retry);
+				end.BackToMenuBtn.addEventListener(MouseEvent.CLICK, exit);
+			}
 			//trace("Gamemap children: "+gameMap.numChildren+" ships: "+ships.length);
 			
 			
@@ -344,11 +354,25 @@
 		{
 			return debrises;
 		}		
+		public function retry(evt:MouseEvent){
+			var game:Main = new Main();
+			
+			removeChild(end);
+			addChild(game);
+			removeEventListener(MouseEvent.CLICK,retry);
+			
+			
+		}
+		public function exit(evt:MouseEvent){
+		
+			fscommand("quit");
+			trace("If this was an exe I believe I would quit!!");
+		}
 		
 		private function directionsScreen(evt:MouseEvent):void
 		{
 			removeChild(SScreen);
-			trace("Here");
+			//trace("Here");
 			
 			
 			addChild(DScreen);
@@ -357,7 +381,7 @@
 		
 		private function directionsScreenClose(evt:MouseEvent):void
 		{			
-			trace("There");	
+			//trace("There");	
 			removeChild(DScreen);
 			addChild(SScreen);
 		}
@@ -368,7 +392,7 @@
 		
 		private function createGame():void
 		{
-			trace("hi");
+			//trace("hi");
 		}
 		
 		public function removeDebris(s:DebrisObject)
@@ -390,7 +414,7 @@
 			}
 			
 			var debris:DebrisObject = new DebrisObject();
-			trace(debris);
+			//trace(debris);
 			debrises.push(debris);
 			gameMap.addChild(debris.debrisClip);
 			debris.debrisClip.x = s.x;
