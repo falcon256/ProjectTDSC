@@ -11,7 +11,7 @@
 	public class BuildShipState implements IAgentState
 	{
 			public var count:int = 0;
-			public var limit:int = 1440*10;
+			public var limit:int = 100;
 			public var increase:int = 1;
 			
 	public function update(a:Agent):void
@@ -74,7 +74,7 @@
 						pirateS.ship.y = y1 + (Math.random() - Math.random()) * 200;
 					}
 					
-					if(a.myShip.isStation) {
+					if(a.myShip.isCivilianStation) {
 						var policeS:PoliceShip = new PoliceShip();
 						Main.getSingleton().gameMap.addChild(policeS);
 						
@@ -89,7 +89,7 @@
 						
 						for each (var s2 in Main.getSingleton().getShipsList())
 						{
-							if(s2.isStation&&Math.random()>0.9)
+							if(s2.isCivilianStation&&Math.random()>0.9)
 							{
 								x1 = s2.x;
 								y1 = s2.y;

@@ -6,8 +6,10 @@ package game {	// just acts as an image
 		public function PirateStation() {
 			ship.isPirateStation=true;
 			ship.isAlienStation=false;
-			ship.isStation=false;
+			ship.isStation= true;
+			ship.isCivilianStation = false;
 			ship.myImage = this;
+			
 			ship.hull = 1000;
 			ship.size = 140;
 		}
