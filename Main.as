@@ -45,6 +45,8 @@
 		private var isStarted:Boolean = false;
 		public var hud:GameHud = new GameHud();
 		public var gameScore:TextField;//game score field
+		public var Reputation:Number = 0;
+		public var Cash:Number = 0;
 		public var score:Number = 0;//score variable to store your points
 		
 		//Reid and Ross additions

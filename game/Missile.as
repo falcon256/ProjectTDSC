@@ -86,7 +86,7 @@
 								targetShip=s;
 								targetX = s.x;
 								targetY = s.y;
-								trace("New missile target detected");
+								//trace("New missile target detected");
 								
 							}
 						}
@@ -127,6 +127,24 @@
 					active=false;
 					if(this.parent)
 						this.parent.removeChild(this);
+					
+					
+					if(Main.getSingleton().playerS.ship==this.parentShip)
+						//this is a player fired weapon
+					{
+						if(s.isPirate||s.isAlien)
+						{
+							Main.getSingleton().Reputation++;
+							trace(""+s.isPirate+" "+Main.getSingleton().Reputation);
+						}
+						else
+						{
+							Main.getSingleton().Reputation--;
+						}
+						
+					}
+					
+					Main.getSingleton().gameScore.text = "Reputation "+Main.getSingleton().Reputation+" Cash "+Main.getSingleton().Cash;
 				}
 			}
 		}
