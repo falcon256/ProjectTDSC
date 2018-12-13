@@ -229,7 +229,7 @@
 			gameScore = new TextField;//game score
 			gameScore.defaultTextFormat = tf;
 			gameScore.width = 200;
-			gameScore.y = 680;
+			gameScore.y = 620;
 			gameScore.x = 1050;
 		
 			gameScore.text = "Reputation: 0 Cash: 0" ;
@@ -305,6 +305,7 @@
 				end.RetryBtn.addEventListener(MouseEvent.CLICK, retry);
 				end.BackToMenuBtn.addEventListener(MouseEvent.CLICK, exit);
 			}
+			health();
 			//trace("Gamemap children: "+gameMap.numChildren+" ships: "+ships.length);
 			
 			
@@ -353,6 +354,32 @@
 			return ships;
 		}
 		
+		public function health()
+		{
+			hud.gotoAndStop(13-int(playerS.ship.hull/8));
+			/*	
+			if(playerS.ship.hull<=90){
+				hud.gotoAndStop(2);
+			}
+			if(playerS.ship.hull<=80){
+				hud.gotoAndStop(3);
+			}
+			if(playerS.ship.hull<=70){
+				hud.gotoAndStop(4);
+			}
+			if(playerS.ship.hull<=60){
+				hud.gotoAndStop(5);
+			}
+			if(playerS.ship.hull<=60){
+				hud.gotoAndStop(5);
+			}
+			if(playerS.ship.hull<=60){
+				hud.gotoAndStop(5);
+			}
+			if(playerS.ship.hull<=60){
+				hud.gotoAndStop(5);
+			}*/
+		}
 		public function getDebrisList():Vector.<DebrisObject>
 		{
 			return debrises;
