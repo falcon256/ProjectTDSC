@@ -8,6 +8,14 @@
 		
 		public function update(a:Agent):void
 		{
+			var dx:Number =  a.target.x - a.x;
+			var dy:Number =  a.target.y - a.y;
+			var dista:Number = Agent.distance1(dx,dy);
+			a.velocity.x = (dx/dista)*a.speed;
+			a.velocity.y = (dy/dista)*a.speed;
+			//a.say("Attacking...");
+			a.speed = 0.5;
+			
 			for each (var pew in Main.getSingleton().getShipsList())
 			{
 				

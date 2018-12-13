@@ -355,12 +355,16 @@
 			return debrises;
 		}		
 		public function retry(evt:MouseEvent){
-			var game:Main = new Main();
+		
 			
+			
+			freshStart();
 			removeChild(end);
-			addChild(game);
 			removeEventListener(MouseEvent.CLICK,retry);
 			
+			
+		}
+		public function freshStart():void{
 			
 		}
 		public function exit(evt:MouseEvent){
