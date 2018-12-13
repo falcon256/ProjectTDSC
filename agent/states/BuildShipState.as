@@ -11,7 +11,7 @@
 	public class BuildShipState implements IAgentState
 	{
 			public var count:int = 0;
-			public var limit:int = 100;
+			public var limit:int = 2880;
 			public var increase:int = 1;
 			
 	public function update(a:Agent):void
@@ -162,6 +162,19 @@
 	}
 
 }
-/*var pirateS:PirateShip = new PirateShip();
-gameMap.addChild(pirateS);
-*/
+
+/*for each (var pew in Main.getSingleton().getShipsList())
+							{
+								var dist:Number = Main.distance(a.myShip.x, a.myShip.y, pew.x, pew.y);
+								if(dist<800)
+								{
+								if (a.myShip.isPirate) {
+									
+									if (Main.getSingleton().Reputation <=0 ){
+									if(!pew.isPirate&&!pew.isPirateStation&&!pew.Main.getSingleton().playerS.ship)
+												{
+													a.myShip.fireMissile();
+												}
+											}
+									else(!pew.isPirate&&!pew.isPirateStation)
+									}*/
