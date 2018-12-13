@@ -18,22 +18,11 @@ import agent.Agent;
 			var dist:Number = Agent.distance1(dx,dy);
 			a.velocity.x = (dx/dist)*a.speed;
 			a.velocity.y = (dy/dist)*a.speed;
-			a.say("Fleeing...");
+			//a.say("Fleeing...");
 			a.speed = 5;
 			
-			if(a.target.hull <=0)
-			{
-				a.setState(Agent.IDLE);
-				a.say("Killed!");
-				trace("Killed!");
-			}
 			
-			var tr:Number = Math.atan2(dy, dx);
-			var dif = Math.abs(tr-a.myShip.rotation);
-			if(dif<1)
-				a.fireRailgun = true;
-			else
-				a.fireRailgun = false;
+			
 			
 			//debug output
 			//trace("Attacking, distance is: "+Agent.distance1(dx,dy));
