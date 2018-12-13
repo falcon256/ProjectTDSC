@@ -232,7 +232,38 @@ package game {
 				}
 			}
 		}
+		public function fireMissile()
+		{
+			if(railgunTimer<=0)
+			{
+				railgunTimer+=10;
+				var pew:Missile = new Missile(this);
+
+				this.myImage.parent.addChild(pew);
+				pew.rotation = this.myImage.rotation;
 				
+				
+				pew.velx = this.velx + Math.cos(Ship.radians(this.rotation));
+				pew.vely = this.vely + Math.sin(Ship.radians(this.rotation));
+				pew.lifetime=100;
+				pew.sizeDelta=0.01;
+				pew.alphaDelta=0.01;
+				pew.x=this.x;
+				pew.y=this.y;
+				
+				
+				if(isNaN(pew.velx))
+				{
+					pew.lifetime=0;
+					pew.velx=0;
+				}
+				if(isNaN(pew.vely))
+				{
+					pew.lifetime=0;
+					pew.vely=0;
+				}
+			}
+		}	
 		
 	}
 	
