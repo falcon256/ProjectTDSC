@@ -18,6 +18,25 @@
 			for each (var pew in Main.getSingleton().getShipsList())
 			{
 				
+				if(pew==Main.getSingleton().playerS.ship)
+				{
+					if(Main.getSingleton().Reputation<-10)
+					{
+						if(a.myShip.isPolice)
+						{
+							a.target = pew;
+							a.setState(Agent.ATTACK);
+						}
+					}
+					else if(Main.getSingleton().Reputation>10)
+					{
+						if(a.myShip.isPirate)
+						{
+							a.target = pew;
+							a.setState(Agent.ATTACK);
+						}
+					}
+				}
 				var dist:Number = Main.distance(a.myShip.x, a.myShip.y, pew.x, pew.y);
 				
 				if (a.myShip.isPirate&&dist<1000) {
