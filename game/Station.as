@@ -4,6 +4,8 @@ package game {	// just acts as an image
 	public class Station extends MovieClip {
 		public var ship:Ship = new Ship();		
 		public function Station() {
+			ship.isPirateStation=false;
+			ship.isAlienStation=false;
 			ship.isStation=true;
 			ship.myImage = this;
 			ship.hull = 1000;

@@ -152,6 +152,7 @@
 					stationS.ship.myAgent.targetX = 300;
 					stationS.ship.myAgent.targetY = 300;
 					stationS.ship.myAgent.setState(Agent.BUILD);
+					stationS.ship.isStation=true;
 				}
 			}
 			for (i = 0; i < 20; i++){
@@ -175,6 +176,7 @@
 					pstationS.ship.myAgent.targetX = 300;
 					pstationS.ship.myAgent.targetY = 300;
 					pstationS.ship.myAgent.setState(Agent.BUILD);
+					pstationS.ship.isPirateStation=true;
 					trace(pstationS.ship.myAgent.x);
 				}
 			}
@@ -199,6 +201,7 @@
 					astationS.ship.myAgent.targetX = 300;
 					astationS.ship.myAgent.targetY = 300;
 					astationS.ship.myAgent.setState(Agent.BUILD);
+					astationS.ship.isAlienStation=true;
 				}
 			}
 

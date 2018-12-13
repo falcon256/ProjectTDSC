@@ -16,7 +16,7 @@
 			//a.say("Attacking...");
 			a.speed = 1;
 			
-			if(a.target.hull <=0)
+			if(a.target.hull <=0||dist>1000)
 			{
 				a.setState(Agent.IDLE);
 				//a.say("Killed!");

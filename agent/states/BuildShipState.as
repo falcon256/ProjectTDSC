@@ -11,7 +11,7 @@
 	public class BuildShipState implements IAgentState
 	{
 			public var count:int = 0;
-			public var limit:int = 200;
+			public var limit:int = 1440*10;
 			public var increase:int = 1;
 			
 	public function update(a:Agent):void
@@ -21,6 +21,24 @@
 			a.speed = 0;
 			var x1:Number = a.myShip.x;
 			var y1:Number = a.myShip.y;
+			
+			for each (var pew in Main.getSingleton().getShipsList())
+			{
+				var dist:Number = Main.distance(a.myShip.x, a.myShip.y, pew.x, pew.y);
+				if(dist<1000)
+				{
+				if (a.myShip.isPirateStation) {
+					if(!pew.isPirate)
+					{
+						a.myShip.fireRailgun();
+					}
+				}
+			}
+			}
+			
+			
+			
+			
 			
 			if (count <= limit)
 				{
@@ -46,17 +64,14 @@
 						
 						for each (var s1 in Main.getSingleton().getShipsList())
 						{
-							if(s1.isPirateStation&&Math.random()>0.95)
+							if(s1.isPirateStation&&Math.random()>0.9)
 							{
 								x1 = s1.x;
 								y1 = s1.y;
+							}
 						}
-					}
-					
-					
-					
-					pirateS.ship.x = x1 + (Math.random() - Math.random()) * 100;
-					pirateS.ship.y = y1 + (Math.random() - Math.random()) * 100;
+						pirateS.ship.x = x1 + (Math.random() - Math.random()) * 200;
+						pirateS.ship.y = y1 + (Math.random() - Math.random()) * 200;
 					}
 					
 					if(a.myShip.isStation) {
@@ -74,7 +89,7 @@
 						
 						for each (var s2 in Main.getSingleton().getShipsList())
 						{
-							if(s2.isStation&&Math.random()>0.95)
+							if(s2.isStation&&Math.random()>0.9)
 							{
 								x1 = s2.x;
 								y1 = s2.y;
@@ -83,8 +98,8 @@
 					
 					
 					
-						policeS.ship.x = x1 + (Math.random() - Math.random()) * 100;
-						policeS.ship.y = y1 + (Math.random() - Math.random()) * 100;
+						policeS.ship.x = x1 + (Math.random() - Math.random()) * 200;
+						policeS.ship.y = y1 + (Math.random() - Math.random()) * 200;
 					}
 					
 					if(a.myShip.isAlienStation) {
@@ -103,17 +118,17 @@
 						
 						for each (var s3 in Main.getSingleton().getShipsList())
 						{
-							if(s3.isAlienStation&&Math.random()>0.95)
+							if(s3.isAlienStation&&Math.random()>0.9)
 							{
 								x1 = s3.x;
 								y1 = s3.y;
+							}
 						}
-					}
 					
 					
 					
-						alienS.ship.x = x1 + (Math.random() - Math.random()) * 100;
-						alienS.ship.y = y1 + (Math.random() - Math.random()) * 100;
+						alienS.ship.x = x1 + (Math.random() - Math.random()) * 200;
+						alienS.ship.y = y1 + (Math.random() - Math.random()) * 200;
 					}
 				}	
 			

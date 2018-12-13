@@ -8,6 +8,19 @@
 		
 		public function update(a:Agent):void
 		{
+			for each (var pew in Main.getSingleton().getShipsList())
+			{
+				
+				var dist:Number = Main.distance(a.myShip.x, a.myShip.y, pew.x, pew.y);
+				
+				if (a.myShip.isPirate&&dist<1000) {
+					if(!pew.isPirate)
+					{
+						a.target = pew;
+						a.setState(Agent.ATTACK);
+					}
+				}
+			}
 			
 			if(a.myShip.isTrader)
 			{
