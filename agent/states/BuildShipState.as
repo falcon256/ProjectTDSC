@@ -33,8 +33,8 @@
 						a.myShip.fireMissile();
 					}
 				}
-				if (a.myShip.isStation) {
-					if(!pew.isPolice&&!pew.isStation){
+				if (a.myShip.isCivilianStation) {
+					if(!pew.isPolice&&!pew.isCivilianStation&&!pew.isTrader){
 						a.myShip.fireMissile();
 					}
 				}
