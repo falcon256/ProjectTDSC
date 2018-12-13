@@ -30,7 +30,11 @@
 				a.fireRailgun = true;
 			else
 				a.fireRailgun = false;
-			
+			if(a.myShip.hull <= 50)
+			{
+				a.setState(Agent.FLEE);
+				
+			}
 			//debug output
 			//trace("Attacking, distance is: "+Agent.distance1(dx,dy));
 		}

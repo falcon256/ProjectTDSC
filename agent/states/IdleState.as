@@ -13,7 +13,6 @@
 			var dista:Number = Agent.distance1(dx,dy);
 			a.velocity.x = (dx/dista)*a.speed;
 			a.velocity.y = (dy/dista)*a.speed;
-			//a.say("Attacking...");
 			a.speed = 0.5;
 			
 			for each (var pew in Main.getSingleton().getShipsList())
@@ -44,16 +43,13 @@
 						a.setState(Agent.ATTACK);
 					}
 				}
+				/*if(a.myShip.isTrader && dist < 1000)
+				{
 				
+				}*/
 			}
 			
-			if(a.myShip.isTrader && dist < 1000)
-			{
-				//var ships:Vector.<Ship> = Main.getSingleton().getShipsList();
-				//var options:Vector.<Ship> = new Vector.<Ship>();
-				//find another space station to move to.
-				//for( int i = 0 ; i < ships.
-			}
+			
 			
 			
 		}

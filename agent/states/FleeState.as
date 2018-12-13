@@ -16,10 +16,10 @@ import agent.Agent;
 			var dx:Number =  a.target.x - a.x;
 			var dy:Number =  a.target.y - a.y;
 			var dist:Number = Agent.distance1(dx,dy);
-			a.velocity.x = -(dx/dist)*a.speed;
-			a.velocity.y = -(dy/dist)*a.speed;
+			a.velocity.x = (dx/dist)*a.speed;
+			a.velocity.y = (dy/dist)*a.speed;
 			a.say("Fleeing...");
-			a.speed = 1;
+			a.speed = 5;
 			
 			if(a.target.hull <=0)
 			{

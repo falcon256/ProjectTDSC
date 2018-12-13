@@ -25,6 +25,11 @@
 			var tr:Number = Math.atan2(dy, dx);
 			
 			a.targetRotation=tr;
+			if(a.myShip.hull <= 50)
+			{
+				a.setState(Agent.FLEE);
+				
+			}
 			//debug output
 			//trace("Moving, distance is: "+Agent.distance1(dx,dy));
 		}

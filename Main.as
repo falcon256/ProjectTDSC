@@ -48,6 +48,7 @@
 		public var Reputation:Number = 0;
 		public var Cash:Number = 0;
 		public var score:Number = 0;//score variable to store your points
+		public var endscreen:Boolean = false;
 		
 		//Reid and Ross additions
 		
@@ -126,6 +127,7 @@
 			addChild(hud);
 			hud.y = 300;
 			playerS.ship.x=100;
+			tradeS.x = Math.random() * 100;
 			
 			var posx:Number = Math.random() * 10000;
 			var posy:Number = Math.random() * 10000;
@@ -299,6 +301,7 @@
 				removeEventListener(Event.ENTER_FRAME, gameloop);
 				Mouse.show();
 				addChild(end);
+				endscreen = true;
 				end.RetryBtn.addEventListener(MouseEvent.CLICK, retry);
 				end.BackToMenuBtn.addEventListener(MouseEvent.CLICK, exit);
 			}
