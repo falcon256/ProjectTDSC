@@ -25,7 +25,7 @@
 		public function Missile(s:Ship) {
 			parentShip=s;
 			addEventListener(Event.ENTER_FRAME, update);
-			pid = new PID(0.03,0.0001,0.0001);
+			pid = new PID(0.04,0.0006,0.001);
 			
 		}
 

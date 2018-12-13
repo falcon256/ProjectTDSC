@@ -87,6 +87,8 @@
 								colN=0;
 								Main.getSingleton().Cash++;
 								Main.getSingleton().gameScore.text = "Reputation: "+Main.getSingleton().Reputation+" Cash: "+Main.getSingleton().Cash;
+								if(ship.hull<200)
+									ship.hull+=Math.random()*100;
 							//}
 						}
 						

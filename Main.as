@@ -127,16 +127,18 @@
 			addChild(hud);
 			hud.y = 300;
 			playerS.ship.x=100;
-			tradeS.x = Math.random() * 100;
-			
-			var posx:Number = Math.random() * 10000;
-			var posy:Number = Math.random() * 10000;
+			tradeS.x = (Math.random()-Math.random()) * 1000;
+			tradeS.y = (Math.random()-Math.random()) * 1000;
+			tradeS.ship.x = tradeS.x;
+			tradeS.ship.y = tradeS.y;
+			var posx:Number = (Math.random()-Math.random()) * 10000;
+			var posy:Number = (Math.random()-Math.random()) * 10000;
 			var good:Boolean = true;
 			var n:int = 0;
 			var i:uint = 0;
 			for (i = 0; i < 20; i++){
-				posx = Math.random() * 10000;
-				posy = Math.random() * 10000;
+				posx = (Math.random()-Math.random()) * 10000;
+				posy = (Math.random()-Math.random()) * 10000;
 				good = true;
 
 				for (n = 0; n < ships.length; n++) 
@@ -160,8 +162,8 @@
 				}
 			}
 			for (i = 0; i < 20; i++){
-				posx = Math.random() * 10000;
-				posy = Math.random() * 10000;
+				posx = (Math.random()-Math.random()) * 10000;
+				posy = (Math.random()-Math.random()) * 10000;
 				good = true;
 				for (n = 0; n < ships.length; n++) 
 				{
@@ -185,8 +187,8 @@
 				}
 			}
 			for (i = 0; i < 20; i++){
-				posx = Math.random() * 10000;
-				posy = Math.random() * 10000;
+				posx = (Math.random()-Math.random()) * 10000;
+				posy = (Math.random()-Math.random()) * 10000;
 				good = true;
 				for (n = 0; n < ships.length; n++) 
 				{
@@ -304,7 +306,7 @@
 			movingBackground.update(gameMap.x,gameMap.y);
 			if(playerS.ship.hull <= 0)
 			{
-				removeEventListener(Event.ENTER_FRAME, gameloop);
+				//removeEventListener(Event.ENTER_FRAME, gameloop);
 				Mouse.show();
 				addChild(end);
 				endscreen = true;
@@ -402,6 +404,14 @@
 		}
 		public function freshStart():void{
 			
+			playerS.ship.hull=100;
+			gameMap.addChild(playerS);
+			ships.push(playerS.ship);
+			playerS.ship.myImage = playerS;
+			playerS.ship.x = (Math.random()-Math.random())*1000;
+			playerS.ship.y = (Math.random()-Math.random())*1000;
+			this.Reputation=0;
+			this.Cash=0;
 		}
 		public function exit(evt:MouseEvent){
 		
