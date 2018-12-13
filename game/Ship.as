@@ -81,12 +81,12 @@ package game {
 			sm.x=this.x-this.myImage.width/2;
 			sm.y=this.y-this.myImage.height/2;*/
 			
-			if(railgunTimer>0)
+			if(railgunTimer>=0)
 				railgunTimer--;
-			if(laserTimer>0)
+			if(laserTimer>=0)
 				laserTimer--;
-			if(missileTimer>0)
-				laserTimer--;
+			if(missileTimer>=0)
+				missileTimer--;
 			
 			if(!isPlayer)
 			{
@@ -116,7 +116,10 @@ package game {
 					this.rotation+=360;*/
 				
 				if(myAgent.fireRailgun)
+				{
 					this.fireRailgun();
+					this.fireMissile();
+				}
 				
 			}
 			
@@ -205,7 +208,7 @@ package game {
 		{
 			if(railgunTimer<=0)
 			{
-				railgunTimer+=10;
+				railgunTimer=10;
 				var pew:RailgunRound = new RailgunRound(this);
 				//trace("pew");
 				this.myImage.parent.addChild(pew);
@@ -233,11 +236,12 @@ package game {
 				}
 			}
 		}
+		
 		public function fireMissile()
 		{
-			if(railgunTimer<=0)
+			if(missileTimer<=0)
 			{
-				railgunTimer+=10;
+				missileTimer=20;
 				var pew:Missile = new Missile(this);
 
 				this.myImage.parent.addChild(pew);
@@ -265,7 +269,5 @@ package game {
 				}
 			}
 		}	
-		
-	}
-	
+	}	
 }

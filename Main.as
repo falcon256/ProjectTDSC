@@ -293,6 +293,12 @@
 			if(isKeyDown(32)){//space for railing
 					playerS.ship.fireRailgun();
 			}
+			if(isKeyDown(70)){
+				playerS.ship.fireMissile();
+			}
+			
+
+			
 			
 			moveCamera();
 			movingBackground.update(gameMap.x,gameMap.y);
